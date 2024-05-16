@@ -1,0 +1,54 @@
+0000-0001 Bind Pose
+0003-0081 loop Idle
+0084-0164 loop Fight Idle
+0167-0191 loop Walk
+0194-0207 loop Run
+0210-0233 loop Attack Head Right Side
+0236-0259 loop Attack Head Left Side
+0261-0284 Start Eating
+0285-0365 loop Eating
+0366-0389 End Eating
+0391-0410 loop Hit Right
+0412-0431 loop Hit Left
+0433-0452 loop Hit Front
+0454-0484 Death Right
+0485-0514 Start Sleep
+0515-0575 loop Sleeping
+0576-0605 End Sleeping
+0607-0631 loop Walk Back
+0634-0656 Start Diging
+0657-0737 loop Diging
+0738-0761 End Diging
+0763-0781 Loop Jumping
+0784-0812 loop Strafe Left  
+0815-0843 loop Strafe Right
+0845-0868 Death Left
+0869-0890 Death Back
+0892-0916 loop Turn Left (90)
+0919-0943 loop Turn Right (90)
+0945-0969 Start Rest
+0970-1040 loop Rest
+1041-1065 End Rest
+1067-1081 loop Gallop
+1084-1103 loop Hit Back
+1105-1164 loop Walk Smell
+1167-1310 loop Walk Diging
+1312-1335 Start Rolling 
+1336-1362 Rolling In The Mud
+1363-1384 End Rolling In The Mud
+1387-1411 loop Walk Turn Left
+1414-1438 loop Walk Turn Right
+1441-1454 loop Run Turn Left
+1455-1470 loop Run Turn Right
+
+
+
+
+
+
+
+
+
+
+
+ 

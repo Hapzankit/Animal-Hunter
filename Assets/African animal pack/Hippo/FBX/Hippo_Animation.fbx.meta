@@ -1,0 +1,2220 @@
+fileFormatVersion: 2
+guid: c22fd3fd517789b499f1e69b6acf62f0
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      74: -6053154310672405562
+    second: Hippo|Attack_1
+  - first:
+      74: 7169707009042958952
+    second: Hippo|Attack_2
+  - first:
+      74: 2126255367598884467
+    second: Hippo|Attack_3
+  - first:
+      74: 7884779198778326406
+    second: Hippo|Attack_4
+  - first:
+      74: 178534105775511741
+    second: Hippo|Death
+  - first:
+      74: 3842323741789111311
+    second: Hippo|Drink_Idle
+  - first:
+      74: -2262818639122122970
+    second: Hippo|Eat_Drink_End
+  - first:
+      74: -656689297294493733
+    second: Hippo|Eat_Drink_Start
+  - first:
+      74: -5648372264861972112
+    second: Hippo|Eat_Idle
+  - first:
+      74: 6291036862727898392
+    second: Hippo|Hit_B
+  - first:
+      74: 6176102041772673068
+    second: Hippo|Hit_F
+  - first:
+      74: -610311424806808478
+    second: Hippo|Hit_M
+  - first:
+      74: -6059612736735555421
+    second: Hippo|Idle_1
+  - first:
+      74: -4271001721472494854
+    second: Hippo|Idle_2
+  - first:
+      74: 3654660716054261319
+    second: Hippo|Idle_3
+  - first:
+      74: -6153831859558933038
+    second: Hippo|Lie_End
+  - first:
+      74: 6564414141268507509
+    second: Hippo|Lie_Idle_1
+  - first:
+      74: -8294087952481258464
+    second: Hippo|Lie_Idle_2
+  - first:
+      74: -9207264203509549998
+    second: Hippo|Lie_Sleep_End
+  - first:
+      74: -6418713543142981844
+    second: Hippo|Lie_Sleep_Idle
+  - first:
+      74: 6698265191260570451
+    second: Hippo|Lie_Sleep_Start
+  - first:
+      74: -8819423497572071778
+    second: Hippo|Lie_Start
+  - first:
+      74: 6454681560740274381
+    second: Hippo|Run_Attack_IP
+  - first:
+      74: -8761872675655748025
+    second: Hippo|Run_Attack_RM
+  - first:
+      74: -6800383576080159574
+    second: Hippo|Run_F_IP
+  - first:
+      74: 5370609238176191
+    second: Hippo|Run_F_RM
+  - first:
+      74: 419549991816503127
+    second: Hippo|Run_FL_IP
+  - first:
+      74: -2275562094721722471
+    second: Hippo|Run_FL_RM
+  - first:
+      74: -8543528060394440447
+    second: Hippo|Run_FR_IP
+  - first:
+      74: -6445291287392815321
+    second: Hippo|Run_FR_RM
+  - first:
+      74: 4799251690179342616
+    second: Hippo|Swim_F_IP
+  - first:
+      74: 2737194615966502103
+    second: Hippo|Swim_F_RM
+  - first:
+      74: -3952189439456163752
+    second: Hippo|Swim_FL_IP
+  - first:
+      74: -970119431001735421
+    second: Hippo|Swim_FL_RM
+  - first:
+      74: 5459414634876053809
+    second: Hippo|Swim_FR_IP
+  - first:
+      74: 6300091138397657624
+    second: Hippo|Swim_FR_RM
+  - first:
+      74: -5479297755089041189
+    second: Hippo|Trot_F_IP
+  - first:
+      74: 4064050444106224590
+    second: Hippo|Trot_F_RM
+  - first:
+      74: 4903706417950657845
+    second: Hippo|Trot_FL_IP
+  - first:
+      74: 6051761324319742994
+    second: Hippo|Trot_FL_RM
+  - first:
+      74: 5449335388652975193
+    second: Hippo|Trot_FR_IP
+  - first:
+      74: -1359657605827838817
+    second: Hippo|Trot_FR_RM
+  - first:
+      74: -1964256241444738341
+    second: Hippo|Turn_Left_IP
+  - first:
+      74: -1976038444413029980
+    second: Hippo|Turn_Left_RM
+  - first:
+      74: -4578135883494433779
+    second: Hippo|Turn_Right_IP
+  - first:
+      74: -5515842419878980080
+    second: Hippo|Turn_Right_RM
+  - first:
+      74: 3143521520151313669
+    second: Hippo|Walk_B_IP
+  - first:
+      74: -8595623135817594292
+    second: Hippo|Walk_B_RM
+  - first:
+      74: -4919201814054966472
+    second: Hippo|Walk_BL_IP
+  - first:
+      74: -61221063615638553
+    second: Hippo|Walk_BL_RM
+  - first:
+      74: 2328246000345630896
+    second: Hippo|Walk_BR_IP
+  - first:
+      74: -4410835240059071130
+    second: Hippo|Walk_BR_RM
+  - first:
+      74: -2362766270803306208
+    second: Hippo|Walk_F_IP
+  - first:
+      74: 5848408030061400951
+    second: Hippo|Walk_F_RM
+  - first:
+      74: 444525193577704264
+    second: Hippo|Walk_FL_IP
+  - first:
+      74: -8329800070343163021
+    second: Hippo|Walk_FL_RM
+  - first:
+      74: -4828823299110558699
+    second: Hippo|Walk_FR_IP
+  - first:
+      74: -5883195794383109347
+    second: Hippo|Walk_FR_RM
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hippo
+    second: {fileID: 2100000, guid: 50a7d77807a1bbb42aa2ea62d52c76c4, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hippo|Attack_1
+      takeName: Hippo|Attack_1
+      internalID: -6053154310672405562
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Attack_2
+      takeName: Hippo|Attack_2
+      internalID: 7169707009042958952
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Attack_3
+      takeName: Hippo|Attack_3
+      internalID: 2126255367598884467
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Attack_4
+      takeName: Hippo|Attack_4
+      internalID: 7884779198778326406
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Death
+      takeName: Hippo|Death
+      internalID: 178534105775511741
+      firstFrame: 0
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Drink_Idle
+      takeName: Hippo|Drink_Idle
+      internalID: 3842323741789111311
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Eat_Drink_End
+      takeName: Hippo|Eat_Drink_End
+      internalID: -2262818639122122970
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Eat_Drink_Start
+      takeName: Hippo|Eat_Drink_Start
+      internalID: -656689297294493733
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Eat_Idle
+      takeName: Hippo|Eat_Idle
+      internalID: -5648372264861972112
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Hit_B
+      takeName: Hippo|Hit_B
+      internalID: 6291036862727898392
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Hit_F
+      takeName: Hippo|Hit_F
+      internalID: 6176102041772673068
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Hit_M
+      takeName: Hippo|Hit_M
+      internalID: -610311424806808478
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Idle_1
+      takeName: Hippo|Idle_1
+      internalID: -6059612736735555421
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Idle_2
+      takeName: Hippo|Idle_2
+      internalID: -4271001721472494854
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Idle_3
+      takeName: Hippo|Idle_3
+      internalID: 3654660716054261319
+      firstFrame: 0
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_End
+      takeName: Hippo|Lie_End
+      internalID: -6153831859558933038
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Idle_1
+      takeName: Hippo|Lie_Idle_1
+      internalID: 6564414141268507509
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Idle_2
+      takeName: Hippo|Lie_Idle_2
+      internalID: -8294087952481258464
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Sleep_End
+      takeName: Hippo|Lie_Sleep_End
+      internalID: -9207264203509549998
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Sleep_Idle
+      takeName: Hippo|Lie_Sleep_Idle
+      internalID: -6418713543142981844
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Sleep_Start
+      takeName: Hippo|Lie_Sleep_Start
+      internalID: 6698265191260570451
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Lie_Start
+      takeName: Hippo|Lie_Start
+      internalID: -8819423497572071778
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_Attack_IP
+      takeName: Hippo|Run_Attack_IP
+      internalID: 6454681560740274381
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_Attack_RM
+      takeName: Hippo|Run_Attack_RM
+      internalID: -8761872675655748025
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_F_IP
+      takeName: Hippo|Run_F_IP
+      internalID: -6800383576080159574
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_F_RM
+      takeName: Hippo|Run_F_RM
+      internalID: 5370609238176191
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_FL_IP
+      takeName: Hippo|Run_FL_IP
+      internalID: 419549991816503127
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_FL_RM
+      takeName: Hippo|Run_FL_RM
+      internalID: -2275562094721722471
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_FR_IP
+      takeName: Hippo|Run_FR_IP
+      internalID: -8543528060394440447
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Run_FR_RM
+      takeName: Hippo|Run_FR_RM
+      internalID: -6445291287392815321
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_F_IP
+      takeName: Hippo|Swim_F_IP
+      internalID: 4799251690179342616
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_F_RM
+      takeName: Hippo|Swim_F_RM
+      internalID: 2737194615966502103
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_FL_IP
+      takeName: Hippo|Swim_FL_IP
+      internalID: -3952189439456163752
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_FL_RM
+      takeName: Hippo|Swim_FL_RM
+      internalID: -970119431001735421
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_FR_IP
+      takeName: Hippo|Swim_FR_IP
+      internalID: 5459414634876053809
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Swim_FR_RM
+      takeName: Hippo|Swim_FR_RM
+      internalID: 6300091138397657624
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_F_IP
+      takeName: Hippo|Trot_F_IP
+      internalID: -5479297755089041189
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_F_RM
+      takeName: Hippo|Trot_F_RM
+      internalID: 4064050444106224590
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_FL_IP
+      takeName: Hippo|Trot_FL_IP
+      internalID: 4903706417950657845
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_FL_RM
+      takeName: Hippo|Trot_FL_RM
+      internalID: 6051761324319742994
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_FR_IP
+      takeName: Hippo|Trot_FR_IP
+      internalID: 5449335388652975193
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Trot_FR_RM
+      takeName: Hippo|Trot_FR_RM
+      internalID: -1359657605827838817
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Turn_Left_IP
+      takeName: Hippo|Turn_Left_IP
+      internalID: -1964256241444738341
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Turn_Left_RM
+      takeName: Hippo|Turn_Left_RM
+      internalID: -1976038444413029980
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Turn_Right_IP
+      takeName: Hippo|Turn_Right_IP
+      internalID: -4578135883494433779
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Turn_Right_RM
+      takeName: Hippo|Turn_Right_RM
+      internalID: -5515842419878980080
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_B_IP
+      takeName: Hippo|Walk_B_IP
+      internalID: 3143521520151313669
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_B_RM
+      takeName: Hippo|Walk_B_RM
+      internalID: -8595623135817594292
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_BL_IP
+      takeName: Hippo|Walk_BL_IP
+      internalID: -4919201814054966472
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_BL_RM
+      takeName: Hippo|Walk_BL_RM
+      internalID: -61221063615638553
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_BR_IP
+      takeName: Hippo|Walk_BR_IP
+      internalID: 2328246000345630896
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_BR_RM
+      takeName: Hippo|Walk_BR_RM
+      internalID: -4410835240059071130
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_F_IP
+      takeName: Hippo|Walk_F_IP
+      internalID: -2362766270803306208
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_F_RM
+      takeName: Hippo|Walk_F_RM
+      internalID: 5848408030061400951
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_FL_IP
+      takeName: Hippo|Walk_FL_IP
+      internalID: 444525193577704264
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_FL_RM
+      takeName: Hippo|Walk_FL_RM
+      internalID: -8329800070343163021
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_FR_IP
+      takeName: Hippo|Walk_FR_IP
+      internalID: -4828823299110558699
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hippo|Walk_FR_RM
+      takeName: Hippo|Walk_FR_RM
+      internalID: -5883195794383109347
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Hippo_Animation(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hippo
+      parentName: Hippo_Animation(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: Hippo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -6.123234e-17, y: -0, z: 1, w: 3.3087225e-24}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: Base
+      parentName: Root
+      position: {x: -4.18893e-17, y: -0.6802936, z: 1.7798098}
+      rotation: {x: 0.000000043711406, y: 3.1341655e-24, z: -1, w: -0.000000051184802}
+      scale: {x: 0.99999976, y: 0.9999999, z: 0.9999999}
+    - name: Spine_1
+      parentName: Base
+      position: {x: 0.000000082197204, y: -0.48470366, z: -0.94022644}
+      rotation: {x: 0.7363483, y: -0.00000002957561, z: 0.000000032186403, w: 0.6766027}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_2
+      parentName: Spine_1
+      position: {x: -4.192813e-20, y: 0.47928894, z: -0.00000010430813}
+      rotation: {x: 0.047229677, y: 5.471179e-13, z: -2.4868996e-14, w: 0.9988841}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Spine_3
+      parentName: Spine_2
+      position: {x: 1.7188393e-22, y: 0.4699439, z: -0.0000000088475645}
+      rotation: {x: -0.08181149, y: 3.3278497e-15, z: -5.928078e-16, w: 0.99664783}
+      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+    - name: Spine_4
+      parentName: Spine_3
+      position: {x: -9.181705e-23, y: 0.5610599, z: 0.00000006426126}
+      rotation: {x: -0.0032530352, y: 5.46908e-18, z: 1.7627145e-15, w: 0.9999947}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Spine_5
+      parentName: Spine_4
+      position: {x: -4.135903e-25, y: 0.3899779, z: 0.000000029802322}
+      rotation: {x: 0.084955916, y: -0.0000015441194, z: -0.00000013165798, w: 0.9963848}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Neck
+      parentName: Spine_5
+      position: {x: 3.4417905e-15, y: 0.19474114, z: 0.000000029802322}
+      rotation: {x: -0.009475566, y: 0.0000025033128, z: 0.0000000056475784, w: 0.9999552}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Head
+      parentName: Neck
+      position: {x: 6.099391e-14, y: 0.1994808, z: 0.000000029802322}
+      rotation: {x: -0.06883901, y: -0.0000020217797, z: 0.00000000820446, w: 0.99762785}
+      scale: {x: 1, y: 1.0000004, z: 1.0000002}
+    - name: Ear_1.L
+      parentName: Head
+      position: {x: -0.21047886, y: 0.022248046, z: -0.27401412}
+      rotation: {x: -0.6569329, y: 0.383841, z: 0.21318312, w: 0.6129096}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Ear_2.L
+      parentName: Ear_1.L
+      position: {x: -0.000000074505806, y: 0.08218519, z: -0.000000026077032}
+      rotation: {x: 0.020414107, y: -0.05517013, z: -0.08208126, w: 0.994888}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Eye.L
+      parentName: Head
+      position: {x: -0.17555015, y: 0.32562092, z: -0.26288968}
+      rotation: {x: -0.5122718, y: 0.83964723, z: -0.006536326, w: 0.18035382}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000001}
+    - name: Ear_1.R
+      parentName: Head
+      position: {x: 0.2104777, y: 0.022247931, z: -0.2740149}
+      rotation: {x: -0.6569334, y: -0.38383967, z: -0.21318161, w: 0.6129105}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Ear_2.R
+      parentName: Ear_1.R
+      position: {x: 0.000000044703484, y: 0.082185134, z: 0.00000011175871}
+      rotation: {x: 0.020414166, y: 0.05517022, z: 0.08208124, w: 0.99488807}
+      scale: {x: 1.0000004, y: 0.9999998, z: 1.0000001}
+    - name: Eye.R
+      parentName: Head
+      position: {x: 0.17554905, y: 0.32562092, z: -0.26289034}
+      rotation: {x: 0.5122718, y: 0.8396468, z: -0.006537462, w: -0.18035553}
+      scale: {x: 0.9999998, y: 0.99999976, z: 1.0000001}
+    - name: Mouth
+      parentName: Head
+      position: {x: -0.0000002415509, y: 0.14701207, z: -0.112570845}
+      rotation: {x: 0.34651235, y: 0.000001230062, z: -0.00000028915272, w: 0.9380454}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Tongue_1
+      parentName: Mouth
+      position: {x: -8.352401e-11, y: 0.34161955, z: 0.00017517805}
+      rotation: {x: -0.30080557, y: 0.000001023198, z: -0.00000046616623, w: 0.9536855}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Tongue_2
+      parentName: Tongue_1
+      position: {x: -3.130829e-14, y: 0.1275802, z: -0.00000014901161}
+      rotation: {x: 0.20767857, y: -4.888532e-12, z: 0.0000005446598, w: 0.97819716}
+      scale: {x: 1, y: 1.0000007, z: 1.0000007}
+    - name: Leg_F_1.L
+      parentName: Spine_4
+      position: {x: -0.14610459, y: 0.13248087, z: -0.17038782}
+      rotation: {x: 0.58690935, y: -0.5266443, z: 0.32830098, w: 0.52000177}
+      scale: {x: 1, y: 1.0000002, z: 1.0000004}
+    - name: Leg_F_2.L
+      parentName: Leg_F_1.L
+      position: {x: -0.00000008940697, y: 0.50291824, z: -0.00000012665987}
+      rotation: {x: 0.079330295, y: 0.09735146, z: 0.11585432, w: 0.98529553}
+      scale: {x: 0.9999999, y: 1.0000002, z: 0.9999998}
+    - name: Leg_F_3.L
+      parentName: Leg_F_2.L
+      position: {x: -0.0000000023283064, y: 0.388028, z: -0.0000000059135346}
+      rotation: {x: -0.018213356, y: 0.10252353, z: 0.0035225332, w: 0.9945576}
+      scale: {x: 0.99999976, y: 0.99999994, z: 1.0000008}
+    - name: Leg_F_4.L
+      parentName: Leg_F_3.L
+      position: {x: 0.000000013038516, y: 0.38885954, z: -0.000000014901161}
+      rotation: {x: 0.06473091, y: -0.09700527, z: 0.13540038, w: 0.98390377}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1}
+    - name: Fin_F.L
+      parentName: Leg_F_4.L
+      position: {x: 0.000000016705599, y: 0.24732827, z: 0.00000008853385}
+      rotation: {x: -0.6673587, y: -0.031048462, z: 0.046894502, w: 0.74260974}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
+    - name: Leg_F_1.R
+      parentName: Spine_4
+      position: {x: 0.14610459, y: 0.13248087, z: -0.17038782}
+      rotation: {x: 0.5869092, y: 0.52664447, z: -0.32830113, w: 0.5200016}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Leg_F_2.R
+      parentName: Leg_F_1.R
+      position: {x: 0.00000008940697, y: 0.50291824, z: -0.00000012665987}
+      rotation: {x: 0.07933036, y: -0.097351514, z: -0.115854196, w: 0.9852955}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.99999946}
+    - name: Leg_F_3.R
+      parentName: Leg_F_2.R
+      position: {x: -0.000000016298145, y: 0.3880282, z: -0.000000027008355}
+      rotation: {x: -0.018212935, y: -0.10252367, z: -0.00352243, w: 0.9945576}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1}
+    - name: Leg_F_4.R
+      parentName: Leg_F_3.R
+      position: {x: -0.0000000037252903, y: 0.38885957, z: -0.000000037252903}
+      rotation: {x: 0.0647301, y: 0.09700512, z: -0.1354004, w: 0.9839038}
+      scale: {x: 1.0000004, y: 1.0000008, z: 1.0000006}
+    - name: Fin_F.R
+      parentName: Leg_F_4.R
+      position: {x: -2.910383e-11, y: 0.24732833, z: 0.00000008469215}
+      rotation: {x: -0.6673587, y: 0.031048432, z: -0.046894494, w: 0.7426098}
+      scale: {x: 0.99999994, y: 1.0000005, z: 1.0000004}
+    - name: Leg_B_1.L
+      parentName: Spine_1
+      position: {x: -0.14610459, y: 0.3092976, z: -0.10524314}
+      rotation: {x: 0.88879865, y: -0.12916476, z: 0.0005106107, w: 0.4397195}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Leg_B_2.L
+      parentName: Leg_B_1.L
+      position: {x: -0, y: 0.37593895, z: 0.00000021234155}
+      rotation: {x: 0.3355737, y: 0.035272032, z: -0.07610839, w: 0.93827164}
+      scale: {x: 0.9999995, y: 0.9999999, z: 1.0000006}
+    - name: Leg_B_3.L
+      parentName: Leg_B_2.L
+      position: {x: 0.000000059604645, y: 0.5024376, z: 0}
+      rotation: {x: 0.27960852, y: 0.1414388, z: -0.0490704, w: 0.9483703}
+      scale: {x: 1, y: 0.9999995, z: 1.0000005}
+    - name: Leg_B_4.L
+      parentName: Leg_B_3.L
+      position: {x: 0.000000007450581, y: 0.4707455, z: 0.0000000037252903}
+      rotation: {x: -0.8636542, y: -0.15286519, z: -0.17772074, w: 0.4462611}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000004}
+    - name: Fin_B.L
+      parentName: Leg_B_4.L
+      position: {x: 0.000000053085387, y: 0.26608834, z: -0.000000031664968}
+      rotation: {x: -0.5149344, y: -0.054877676, z: 0.0072531803, w: 0.85544044}
+      scale: {x: 1, y: 0.9999997, z: 1.0000004}
+    - name: Leg_B_1.R
+      parentName: Spine_1
+      position: {x: 0.14610459, y: 0.3092976, z: -0.10524315}
+      rotation: {x: 0.8887987, y: 0.12916477, z: -0.00051059574, w: 0.43971944}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Leg_B_2.R
+      parentName: Leg_B_1.R
+      position: {x: -0, y: 0.37593895, z: 0.00000021234155}
+      rotation: {x: 0.33557346, y: -0.035272013, z: 0.076108366, w: 0.9382717}
+      scale: {x: 0.9999995, y: 0.9999993, z: 0.99999976}
+    - name: Leg_B_3.R
+      parentName: Leg_B_2.R
+      position: {x: -0.000000007450581, y: 0.5024373, z: -0.000000044703484}
+      rotation: {x: 0.279609, y: -0.14143887, z: 0.049070563, w: 0.9483702}
+      scale: {x: 1, y: 0.99999976, z: 1.0000008}
+    - name: Leg_B_4.R
+      parentName: Leg_B_3.R
+      position: {x: 0.000000014901161, y: 0.4707454, z: -0.000000022351742}
+      rotation: {x: -0.8636544, y: 0.15286538, z: 0.17772074, w: 0.44626087}
+      scale: {x: 1.0000001, y: 1.000001, z: 1.0000012}
+    - name: Fin_B.R
+      parentName: Leg_B_4.R
+      position: {x: -0.000000044703484, y: 0.26608837, z: 0.000000022351742}
+      rotation: {x: -0.5149344, y: 0.05487765, z: -0.0072532315, w: 0.85544056}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1.0000008}
+    - name: Tale
+      parentName: Base
+      position: {x: 0.000000082197204, y: -0.48470366, z: -0.94022644}
+      rotation: {x: -0.76155835, y: -0.000000028329199, z: -0.000000033288767, w: 0.6480964}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Tale_1
+      parentName: Tale
+      position: {x: 4.2351647e-22, y: 0.17474839, z: -0.000000014901161}
+      rotation: {x: -0.053100966, y: 3.5527133e-15, z: 1.7763566e-15, w: 0.99858916}
+      scale: {x: 1, y: 1.0000005, z: 1.0000004}
+    - name: Tale_2
+      parentName: Tale_1
+      position: {x: 8.4836205e-10, y: 0.12130573, z: -0.00000009125506}
+      rotation: {x: -0.0075647607, y: -0.00000011920592, z: 9.0177554e-10, w: 0.99997145}
+      scale: {x: 0.99999994, y: 1.0000004, z: 1.0000004}
+    - name: Tale_3
+      parentName: Tale_2
+      position: {x: -2.2723157e-10, y: 0.10302864, z: 0.00000015233638}
+      rotation: {x: 0.025874648, y: 5.6843412e-14, z: -0.0000000061689946, w: 0.9996652}
+      scale: {x: 1, y: 1.0000008, z: 1.0000008}
+    - name: Tale_4
+      parentName: Tale_3
+      position: {x: -0.0000000012574048, y: 0.11554445, z: 0.00000014868056}
+      rotation: {x: 0.000372542, y: -1.3941869e-14, z: -8.8810494e-11, w: 1}
+      scale: {x: 1, y: 1.0000005, z: 1.0000006}
+    - name: Leg_F_IK.L
+      parentName: Root
+      position: {x: 0.23303358, y: 0.8215685, z: 0.33963025}
+      rotation: {x: 0.000000010360964, y: -0.6455134, z: 0.76374424, w: -0.0026754262}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: Leg_F_IK.R
+      parentName: Root
+      position: {x: -0.23303358, y: 0.6716201, z: 0.33963025}
+      rotation: {x: -0.000000010360964, y: -0.6455134, z: 0.76374424, w: 0.0026754262}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    - name: Leg_B_IK.L
+      parentName: Root
+      position: {x: 0.24931315, y: -0.8050172, z: 0.3560104}
+      rotation: {x: -0.00000005960465, y: -0.7814049, z: 0.62157196, w: 0.055270076}
+      scale: {x: 0.99999976, y: 1.0000001, z: 0.99999994}
+    - name: Leg_B_IK.R
+      parentName: Root
+      position: {x: -0.24931315, y: -0.9223681, z: 0.3560104}
+      rotation: {x: 0.00000005960465, y: -0.7814049, z: 0.62157196, w: -0.055270076}
+      scale: {x: 0.99999976, y: 1.0000001, z: 0.99999994}
+    - name: Hippo_Mesh_LOD0
+      parentName: Hippo_Animation(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

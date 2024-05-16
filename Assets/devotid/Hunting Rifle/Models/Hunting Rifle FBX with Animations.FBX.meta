@@ -1,0 +1,413 @@
+fileFormatVersion: 2
+guid: 0e3350f9bbe15584f96d69d3648d41c9
+timeCreated: 1512493501
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bolt
+    100002: Brass Casing
+    100004: Bullet
+    100006: Cocking Handle
+    100008: Gun Sling
+    100010: Hammer
+    100012: Hammer Extension
+    100014: //RootNode
+    100016: Magazine Door
+    100018: Main Body
+    100020: Rail Mount
+    100022: Rear Adjustable Sight
+    100024: Scope
+    100026: Scope Rear Lens
+    100028: Sight Height Adjuster
+    100030: Trigger
+    100032: Brass Casing_EMPTY
+    100034: Bullet Complete
+    400000: Bolt
+    400002: Brass Casing
+    400004: Bullet
+    400006: Cocking Handle
+    400008: Gun Sling
+    400010: Hammer
+    400012: Hammer Extension
+    400014: //RootNode
+    400016: Magazine Door
+    400018: Main Body
+    400020: Rail Mount
+    400022: Rear Adjustable Sight
+    400024: Scope
+    400026: Scope Rear Lens
+    400028: Sight Height Adjuster
+    400030: Trigger
+    400032: Brass Casing_EMPTY
+    400034: Bullet Complete
+    2300000: Bolt
+    2300002: Brass Casing
+    2300004: Bullet
+    2300006: Cocking Handle
+    2300008: Gun Sling
+    2300010: Hammer
+    2300012: Hammer Extension
+    2300014: Magazine Door
+    2300016: Main Body
+    2300018: Rail Mount
+    2300020: Rear Adjustable Sight
+    2300022: Scope
+    2300024: Scope Rear Lens
+    2300026: Sight Height Adjuster
+    2300028: Trigger
+    2300030: Brass Casing_EMPTY
+    2300032: Bullet Complete
+    3300000: Bolt
+    3300002: Brass Casing
+    3300004: Bullet
+    3300006: Cocking Handle
+    3300008: Gun Sling
+    3300010: Hammer
+    3300012: Hammer Extension
+    3300014: Magazine Door
+    3300016: Main Body
+    3300018: Rail Mount
+    3300020: Rear Adjustable Sight
+    3300022: Scope
+    3300024: Scope Rear Lens
+    3300026: Sight Height Adjuster
+    3300028: Trigger
+    3300030: Brass Casing_EMPTY
+    3300032: Bullet Complete
+    4300000: Main Body
+    4300002: Hammer
+    4300004: Hammer Extension
+    4300006: Cocking Handle
+    4300008: Trigger
+    4300010: Rear Adjustable Sight
+    4300012: Sight Height Adjuster
+    4300014: Brass Casing
+    4300016: Bullet
+    4300018: Magazine Door
+    4300020: Bolt
+    4300022: Rail Mount
+    4300024: Scope
+    4300026: Scope Rear Lens
+    4300028: Gun Sling
+    4300030: Brass Casing_EMPTY
+    4300032: Bullet Complete
+    7400000: Cocking RIfle
+    7400002: Firing Rifle
+    7400004: Idle
+    7400006: Loading Round
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Cocking RIfle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bolt
+        weight: 1
+      - path: Brass Casing
+        weight: 1
+      - path: Brass Casing/Bullet
+        weight: 1
+      - path: Cocking Handle
+        weight: 1
+      - path: Gun Sling
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: Hammer/Hammer Extension
+        weight: 1
+      - path: Magazine Door
+        weight: 1
+      - path: Main Body
+        weight: 1
+      - path: Rail Mount
+        weight: 1
+      - path: Rail Mount/Scope
+        weight: 1
+      - path: Rail Mount/Scope/Scope Rear Lens
+        weight: 1
+      - path: Rear Adjustable Sight
+        weight: 1
+      - path: Sight Height Adjuster
+        weight: 1
+      - path: Trigger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Firing Rifle
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bolt
+        weight: 1
+      - path: Brass Casing
+        weight: 1
+      - path: Brass Casing/Bullet
+        weight: 1
+      - path: Cocking Handle
+        weight: 1
+      - path: Gun Sling
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: Hammer/Hammer Extension
+        weight: 1
+      - path: Magazine Door
+        weight: 1
+      - path: Main Body
+        weight: 1
+      - path: Rail Mount
+        weight: 1
+      - path: Rail Mount/Scope
+        weight: 1
+      - path: Rail Mount/Scope/Scope Rear Lens
+        weight: 1
+      - path: Rear Adjustable Sight
+        weight: 1
+      - path: Sight Height Adjuster
+        weight: 1
+      - path: Trigger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 31
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bolt
+        weight: 1
+      - path: Brass Casing
+        weight: 1
+      - path: Brass Casing/Bullet
+        weight: 1
+      - path: Cocking Handle
+        weight: 1
+      - path: Gun Sling
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: Hammer/Hammer Extension
+        weight: 1
+      - path: Magazine Door
+        weight: 1
+      - path: Main Body
+        weight: 1
+      - path: Rail Mount
+        weight: 1
+      - path: Rail Mount/Scope
+        weight: 1
+      - path: Rail Mount/Scope/Scope Rear Lens
+        weight: 1
+      - path: Rear Adjustable Sight
+        weight: 1
+      - path: Sight Height Adjuster
+        weight: 1
+      - path: Trigger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Loading Round
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bolt
+        weight: 1
+      - path: Brass Casing
+        weight: 1
+      - path: Brass Casing/Bullet
+        weight: 1
+      - path: Brass Casing_EMPTY
+        weight: 1
+      - path: Bullet Complete
+        weight: 1
+      - path: Cocking Handle
+        weight: 1
+      - path: Gun Sling
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: Hammer/Hammer Extension
+        weight: 1
+      - path: Magazine Door
+        weight: 1
+      - path: Main Body
+        weight: 1
+      - path: Rail Mount
+        weight: 1
+      - path: Rail Mount/Scope
+        weight: 1
+      - path: Rail Mount/Scope/Scope Rear Lens
+        weight: 1
+      - path: Rear Adjustable Sight
+        weight: 1
+      - path: Sight Height Adjuster
+        weight: 1
+      - path: Trigger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
