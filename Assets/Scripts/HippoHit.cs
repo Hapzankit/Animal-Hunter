@@ -93,7 +93,7 @@ namespace HapzsoftGames
         {
             yield return new WaitForSeconds(2f);
 
-            animal.currentState = Animals.AnimalState.Wounded;
+            animal.currentState = AnimalState.Wounded;
             animal.UpdateState();
 
         }

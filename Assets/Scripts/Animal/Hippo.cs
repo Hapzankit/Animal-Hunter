@@ -2,9 +2,11 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 
@@ -24,21 +26,12 @@ public class Hippo : Animals
     public override void InitializeAnimal()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = walkSpeed;
+        SetNavMeshAgentSpeed(walkSpeed);
 
         currentState = AnimalState.Idle;
         UpdateState();
     }
 
-
-    private void Update()
-    {
-        if(currentState == AnimalState.Run)
-        {
-            Debug.Log("Distance To player" + navMeshAgent.remainingDistance);
-            Debug.Log("Stoping Distance To player" + navMeshAgent.stoppingDistance);
-        }
-    }
 
 
     public override void UpdateState()
@@ -94,10 +87,29 @@ public class Hippo : Animals
     {
         Debug.Log("Animal is Wounded set the player destination");
         navMeshAgent.ResetPath();
+
+        int randomNo = Random.Range(0, 100);
+
+        //if randomNo is less than 50 then animal will attack otherwise it will Flee.
+        bool ShouldAttack = randomNo < 20 ? true : false; 
+
+        Vector3 targetPosition = Vector3.zero;
+
+        if (ShouldAttack)
+        {
+            targetPosition = player.transform.position + player.transform.forward;
+            GotoAttackMode = true;
+        }
+        else
+        {
+            GotoAttackMode = false ;
+            targetPosition = GetRandomNavMeshPosition(transform.position, wanderDistance);
+        }
+
         //Either Flee for Attack the player
-        navMeshAgent.SetDestination(player.transform.position + player.transform.forward);    //For now only adding Attack state
+        navMeshAgent.SetDestination(targetPosition);   
         Debug.Log("current Navmesh speed");
-        navMeshAgent.speed += 4;
+        SetNavMeshAgentSpeed(runSpeed);
         Debug.Log("after wounded Navmesh speed");
         SetState(AnimalState.Run);
 
@@ -156,28 +168,39 @@ public class Hippo : Animals
     private IEnumerator WaitToRun()
     {
         // Wait until the path is completely calculated
-        yield return new WaitUntil(() => !navMeshAgent.pathPending);
+        //yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
-        Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
-        Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
+        yield return new  WaitUntil(() => navMeshAgent.pathPending);
 
-        // Continuously check if the agent is within attack range
-        while (true)
+        if (GotoAttackMode)
         {
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 2)
-            {
-                navMeshAgent.ResetPath();
-                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
-                {
-                    // Then Changing the state to attack player
-                    Debug.Log("Starting to attack system");
-                    SetState(AnimalState.Attack);
-                    break; // Break the loop if the attack starts
-                }
-            }
-
-            yield return null; // Wait a frame before checking again
+            StartCoroutine(WaitForAttack());
         }
+        else
+        {
+            StartCoroutine(WaitForFlee());
+        }
+
+        //Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
+        //Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
+
+        //// Continuously check if the agent is within attack range
+        //while (true)
+        //{
+        //    if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 2)
+        //    {
+        //        navMeshAgent.ResetPath();
+        //        if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+        //        {
+        //            // Then Changing the state to attack player
+        //            Debug.Log("Starting to attack system");
+        //            SetState(AnimalState.Attack);
+        //            break; // Break the loop if the attack starts
+        //        }
+        //    }
+
+        //    yield return null; // Wait a frame before checking again
+        //}
     }
 
     public override void SetState(AnimalState newState)

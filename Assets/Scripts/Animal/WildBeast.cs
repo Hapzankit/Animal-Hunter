@@ -15,7 +15,7 @@ public class WildBeast : Animals
     public override void InitializeAnimal()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = walkSpeed;
+        SetNavMeshAgentSpeed(walkSpeed);
 
         currentState = AnimalState.Idle;
         UpdateState();

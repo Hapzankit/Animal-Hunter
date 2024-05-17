@@ -190,7 +190,8 @@ public class SimpleRifleController : MonoBehaviour
                 
                 
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().StopAllCoroutines();
-                hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<NavMeshAgent>().speed = 0;
+                hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().SetNavMeshAgentSpeed(0);
+               // hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<NavMeshAgent>().speed = 0;
                 
                
                 StartCoroutine(DelayedFire());
