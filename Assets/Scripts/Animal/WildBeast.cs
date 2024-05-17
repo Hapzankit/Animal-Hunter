@@ -69,11 +69,6 @@ public class WildBeast : Animals
     public override void HandleWoundedState()
     {
 
-        //Either Flee for Attack the player
-        //navMeshAgent.SetDestination(player.transform.position);    //For now only adding Attack state
-        //navMeshAgent.speed *= 2;
-        //SetState(AnimalState.Run);
-
     }
 
     private IEnumerator WaitToMove()

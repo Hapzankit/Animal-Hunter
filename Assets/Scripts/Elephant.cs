@@ -9,6 +9,7 @@ public class Elephant : Animals
     void Start()
     {
         InitializeAnimal();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void InitializeAnimal()
@@ -33,25 +34,55 @@ public class Elephant : Animals
             case AnimalState.Run:
                 HandleRunState();
                 break;
-            case AnimalState.Death:
-                HandleDeathState();
+            case AnimalState.Attack:
+                HandleAttackState();
+                break;
+            case AnimalState.Wounded:
+                HandleWoundedState();
                 break;
         }
     }
 
     public override void HandleWoundedState()
     {
+        Debug.Log("Animal is Wounded set the player destination");
+        navMeshAgent.ResetPath();
+
+        int randomNo = Random.Range(0, 100);
+
+        //if randomNo is less than 50 then animal will attack otherwise it will Flee.
+        bool ShouldAttack = randomNo < 10 ? true : false;
+
+        Vector3 targetPosition = Vector3.zero;
+
+        if (ShouldAttack)
+        {
+            targetPosition = player.transform.position + player.transform.forward;
+            GotoAttackMode = true;
+        }
+        else
+        {
+            GotoAttackMode = false;
+            targetPosition = GetRandomNavMeshPosition(transform.position, wanderDistance);
+        }
 
         //Either Flee for Attack the player
-        //navMeshAgent.SetDestination(player.transform.position);    //For now only adding Attack state
-        //navMeshAgent.speed *= 2;
-        //SetState(AnimalState.Run);
+        navMeshAgent.SetDestination(targetPosition);
+        Debug.Log("current Navmesh speed");
+        SetNavMeshAgentSpeed(runSpeed);
+        Debug.Log("after wounded Navmesh speed");
+        SetState(AnimalState.Run);
 
     }
     public override void HandleAttackState()
     {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 100);
 
-       // player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
+        player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
+
+        StartCoroutine(WaitForPlayerMovement());
 
     }
     public override void HandleIdleState()
@@ -73,6 +104,7 @@ public class Elephant : Animals
     {
     }
 
+    
     private IEnumerator WaitToMove()
     {
         float waitTime = Random.Range(idleTime / 2, idleTime * 2);
@@ -113,13 +145,16 @@ public class Elephant : Animals
 
     private IEnumerator WaitToRun()
     {
-        float waitTime = Random.Range(idleTime / 2, idleTime * 2);
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitUntil(() => navMeshAgent.pathPending);
 
-        Vector3 randomDestination = GetRandomNavMeshPosition(transform.position, wanderDistance);
-
-        navMeshAgent.SetDestination(randomDestination);
-        SetState(AnimalState.Run);
+        if (GotoAttackMode)
+        {
+            StartCoroutine(WaitForAttack());
+        }
+        else
+        {
+            StartCoroutine(WaitForFlee());
+        }
     }
 
     public override void SetState(AnimalState newState)
@@ -139,38 +174,13 @@ public class Elephant : Animals
     public override void OnStateChanged(AnimalState newState)
     {
         UpdateState();
-
-        //Debug.Log("animation state " + newState.ToString());
-
         // Switch based on the new state to set Animator parameters
-        switch (newState)
-        {
-            case AnimalState.Idle:
-                animator.SetBool("IsIdle", true);
-                animator.SetBool("IsWalking", false);
-                animator.SetBool("IsRunning", false);
-                animator.ResetTrigger("IsDead");
-                // Debug.Log("animation changing to Idle");
 
-                // Assuming "IsDead" is a trigger for the death animation
-                // and should be reset when transitioning to other states
-                break;
+        animator.SetBool("IsIdle", newState == AnimalState.Idle);
+        animator.SetBool("IsWalking", newState == AnimalState.Walk);
+        animator.SetBool("IsRunning", newState == AnimalState.Run);
+        animator.SetBool("IsAttacking", newState == AnimalState.Attack);
+        animator.ResetTrigger("IsDead");
 
-            case AnimalState.Walk:
-                animator.SetBool("IsWalking", true);
-                animator.SetBool("IsRunning", false);
-                animator.SetBool("IsIdle", false);
-                animator.ResetTrigger("IsDead");
-                //Debug.Log("animation changing to Walk");
-                break;
-
-            case AnimalState.Run:
-                animator.SetBool("IsRunning", true);
-                animator.SetBool("IsWalking", false); // Depending on your setup, you may not need this
-                animator.SetBool("IsIdle", false);
-                animator.ResetTrigger("IsDead");
-                // Debug.Log("animation changing to Run");
-                break;
-        }
     }
 }

@@ -27,8 +27,6 @@ namespace HapzsoftGames
 
                 SimpleRifleController simpleRifleController = FindObjectOfType<SimpleRifleController>();
 
-                
-
                 switch (gameObject.name)
                 {
                     case "Base":
@@ -89,14 +87,7 @@ namespace HapzsoftGames
             }
         }
 
-        private IEnumerator WaitBeforeAttack()
-        {
-            yield return new WaitForSeconds(2f);
-
-            animal.currentState = AnimalState.Wounded;
-            animal.UpdateState();
-
-        }
+        
     }
 
 

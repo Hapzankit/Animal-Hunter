@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 //using static UnityEditor.Progress;
 
 namespace HapzsoftGames
@@ -82,8 +83,25 @@ namespace HapzsoftGames
             float newHealth = animal.health / 90;
             Debug.Log("The health of the hippo left is " + newHealth);
 
-            animal_health_bar.fillAmount = newHealth; //Here later on instead of 100 that totla health animal will come 
+            animal_health_bar.DOFillAmount(newHealth, 0.5f).OnComplete(DisableHealthBar); //Here later on instead of 100 that totla health animal will come 
                                                                                         //Currently used 100 because all animals have 100 as a total health.
+           
+        }
+
+        public virtual IEnumerator WaitBeforeAttack()
+        {
+            yield return new WaitForSeconds(2f);
+
+            animal.currentState = AnimalState.Wounded;
+            animal.UpdateState();
+
+        }
+        void DisableHealthBar()
+        {
+            if(animal.health <= 1)
+            {
+                animal_health_bar.transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 

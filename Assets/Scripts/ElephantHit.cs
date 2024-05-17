@@ -42,6 +42,7 @@ namespace HapzsoftGames
                         if (Dear.GetComponentInParent<Elephant>().health > 0)
                         {
                             CheckToSetPlayer("Hit BAck", simpleRifleController);
+                            StartCoroutine(WaitBeforeAttack());
                         }
                         else
                         {

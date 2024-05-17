@@ -9,7 +9,6 @@ using UnityEngine.AI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 
-
 [RequireComponent(typeof(NavMeshAgent))]
 public class Hippo : Animals
 {
@@ -53,12 +52,6 @@ public class Hippo : Animals
             case AnimalState.Wounded:
                 HandleWoundedState();
                 break;
-
-
-
-
-
-
         }
     }
 
@@ -91,7 +84,7 @@ public class Hippo : Animals
         int randomNo = Random.Range(0, 100);
 
         //if randomNo is less than 50 then animal will attack otherwise it will Flee.
-        bool ShouldAttack = randomNo < 20 ? true : false; 
+        bool ShouldAttack = randomNo < 10 ? true : false; 
 
         Vector3 targetPosition = Vector3.zero;
 
@@ -181,26 +174,7 @@ public class Hippo : Animals
             StartCoroutine(WaitForFlee());
         }
 
-        //Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
-        //Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
-
-        //// Continuously check if the agent is within attack range
-        //while (true)
-        //{
-        //    if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 2)
-        //    {
-        //        navMeshAgent.ResetPath();
-        //        if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
-        //        {
-        //            // Then Changing the state to attack player
-        //            Debug.Log("Starting to attack system");
-        //            SetState(AnimalState.Attack);
-        //            break; // Break the loop if the attack starts
-        //        }
-        //    }
-
-        //    yield return null; // Wait a frame before checking again
-        //}
+        
     }
 
     public override void SetState(AnimalState newState)
@@ -231,8 +205,6 @@ public class Hippo : Animals
         animator.SetBool("IsRunning", newState == AnimalState.Run);
         animator.SetBool("IsAttacking", newState == AnimalState.Attack);
         animator.ResetTrigger("IsDead");
-
-
         
     }
 
