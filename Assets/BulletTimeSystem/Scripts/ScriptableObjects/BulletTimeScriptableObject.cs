@@ -36,8 +36,13 @@ namespace TheBox
         public float deathTime = 3f;
 
         [Space]
-        [Tooltip("Force applied to the bullet rigidbody.")]
-        public float bulletSpeed = 33333f;
+        [Tooltip("Force applied to the bullet rigidbody when entering the bullet time motion")]
+        public float bulletSpeedBulletMotion = 33333f; //This is the bullet when in BulletTime motion
+
+        [Space]
+        [Tooltip("Force applied to the bullet rigidbody for normal bullet motion")]
+        public float bulletSpeedNormalMotion = 3333f; //This is the bullet when in Normal motion
+
 
         [Space]
         [Tooltip("Priority between both camera.")]

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] AnimalInfoSetUp animalInfoSetUp;
+
     void Awake()
     {
         if (instance == null)
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        animalInfoSetUp.SetupStatsUI("Hippo");
     }
 
     // Unity Events for designer customization

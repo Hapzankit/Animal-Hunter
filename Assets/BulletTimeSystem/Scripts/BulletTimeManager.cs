@@ -10,7 +10,7 @@ namespace TheBox
         public static BulletTimeManager instance;
 
         [Header("Bullet time Scriptable Objects")]
-        [SerializeField] BulletTimeScriptableObject bulletTimeValues = default;
+        public BulletTimeScriptableObject bulletTimeValues = default;
 
         [Header("Prefabs")]
         [SerializeField] GameObject BulletTimePrefab = default;
@@ -112,7 +112,9 @@ namespace TheBox
         {
             print("rotation : " + bulletRotation.transform.rotation.y);
             bulletTimeInstance = Instantiate(BulletTimePrefab, startPoint , Quaternion.identity);
-            bulletTimeInstance.transform.LookAt(ray.point, Vector3.up);
+            Debug.Log("Buller look at target" + ray.collider.transform.root.name);
+
+            bulletTimeInstance.transform.LookAt(ray.collider.transform, Vector3.up);
 
             
             bulletTimeCameraInstance = Instantiate(BulletTimeCameraPrefab, startPoint, Quaternion.identity);
@@ -214,7 +216,7 @@ namespace TheBox
         {
             bulletTimeInstance.TryGetComponent(out Rigidbody bulletRigidBody);
             bulletRigidBody.AddForce(
-                bulletTimeValues.bulletSpeed * bulletRigidBody.mass * bulletTimeInstance.transform.forward);
+                bulletTimeValues.bulletSpeedBulletMotion * bulletRigidBody.mass * bulletTimeInstance.transform.forward);
         }
 
         /// <summary>

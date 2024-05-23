@@ -27,6 +27,7 @@ namespace HapzsoftGames
         [SerializeField]
         Image animal_health_bar;
 
+        public AnimalPartPosition partPosition;
 
         private void Start()
         {
@@ -69,15 +70,17 @@ namespace HapzsoftGames
             animator.SetBool("IsDead", true);
             animator.SetBool("IsIdle", false);
             animator.SetBool("IsWalking", false);
-            simpleRifleController.StartCoroutine(simpleRifleController.CameraOn());
+            simpleRifleController.StartCoroutine(simpleRifleController.CameraOn(CameraHit));
             Debug.Log("Animal is dead");
             LevelManager.instance.shootedAnimal = gameObject.tag;
-            LevelManager.instance.LevelClearCheck();
+            //LevelManager.instance.LevelClearCheck();
 
         }
         
         public void TakeDamage(int damage)
         {
+            animal.weakPoints.HideweakPoints();
+
             animal.health -= damage;
 
             float newHealth = animal.health / 90;
@@ -106,4 +109,9 @@ namespace HapzsoftGames
     }
 
 
+}
+
+public enum AnimalPartPosition
+{
+    Front, Mid, Back
 }

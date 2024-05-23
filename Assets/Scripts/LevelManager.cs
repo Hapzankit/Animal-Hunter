@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    private string targetAnimal;
+    public  string targetAnimal;
 
-    private int currentLevel;
+    private int currentLevelNo;
 
-    [SerializeField]
-    private List<Animals> animalsCurrentlyLive = new List<Animals>();
+    
+    public List<Animals> animalsCurrentlyLive = new List<Animals>();
 
     [SerializeField]
     private List<Animals> animalsPrefablist = new List<Animals>();
@@ -25,11 +26,11 @@ public class LevelManager : MonoBehaviour
 
     public string shootedAnimal;
 
-    [SerializeField] GameObject gameOverScreen;
+
 
     public GameObject animalSpawnPoint;
 
-
+    public AnimalInfoSetUp animalInfoSetUp;
 
     private void Awake()
     {
@@ -41,13 +42,19 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
+        SetFirstLevel();
+        CheckIfAnimalExistToCompleteLevel();
+
     }
 
 
-    private void Start()
+    public void SetFirstLevel()
     {
-        CheckForNewLevel(1);
-
+        currentLevelNo = 1;
+        onGoingLevel = GetNewLevel();
+        targetAnimal = onGoingLevel.AnimalToShoot;
     }
 
 
@@ -57,22 +64,26 @@ public class LevelManager : MonoBehaviour
       {
             onGoingLevel.isCleard = true;
             CheckForNewLevel(onGoingLevel.LevelNo + 1);
+            UIManager.instance.levelClearText.text = "You Shot a " + shootedAnimal;
       }
     }
 
     private void CheckForNewLevel(int levelno)
     {
-        Debug.Log("Setting New Level");
-        currentLevel = levelno;
+        
+        currentLevelNo = levelno;
         onGoingLevel = GetNewLevel();
         
         if(onGoingLevel != null)
         {
             SetNewLevel();
+            Debug.Log("Setting New Level");
         }
         else
         {
             CheckifGameOver();
+            Debug.Log("Showing Game Over Screen");
+
         }
         
 
@@ -82,9 +93,11 @@ public class LevelManager : MonoBehaviour
     {
         targetAnimal =  onGoingLevel.AnimalToShoot;
 
-        UIManager.instance.taskText.text = "Kill a " + targetAnimal;
+        //SetUP animal Stat UI
+        animalInfoSetUp.SetupStatsUI(targetAnimal);
+     
+        UIManager.instance.SetLevelClearScreen("Level" + onGoingLevel.LevelNo.ToString());
 
-        CheckIfAnimalExistToCompleteLevel();
     }
     
 
@@ -115,17 +128,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("All levels are cleared");
         return null;
     }
-    //Just adding till developement purpose
-    private void OnDestroy()
-    {
-        foreach(Level level in LevelList)
-        {
-            level.isCleard = false;
-        }
-
-        
-    }
-
+   
 
     private void CheckIfAnimalExistToCompleteLevel()
     {
@@ -167,8 +170,21 @@ public class LevelManager : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(5f);
-        gameOverScreen.SetActive(true);
+        UIManager.instance.gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
+
+    //Just adding till developement purpose
+    private void OnDestroy()
+    {
+        foreach (Level level in LevelList)
+        {
+            level.isCleard = false;
+            Debug.Log("Resetting level State");
+        }
+
+
+    }
+
 }
 

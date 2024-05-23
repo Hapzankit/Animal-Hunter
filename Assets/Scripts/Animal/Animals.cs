@@ -45,6 +45,9 @@ public abstract class Animals : MonoBehaviour
     public abstract void HandleWoundedState();
 
     public GameObject player;
+
+    public WeakPoints weakPoints;
+
     public virtual Vector3 GetRandomNavMeshPosition(Vector3 origin, float distance)
     {
         Vector3 randomDirection = Random.insideUnitSphere * distance;

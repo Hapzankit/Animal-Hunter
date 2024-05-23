@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.AI;
 using Cinemachine;
+using TheBox;
 
 
 public class SimpleRifleController : MonoBehaviour
@@ -73,7 +74,10 @@ public class SimpleRifleController : MonoBehaviour
     public AudioSource BulletAudioSource;
     public AudioClip BulletAudioClip;
     private bool isFired;
+  
 
+    GameObject Shootedbullet;
+    [SerializeField] GameObject mainBullet;
     void Start()
     {
         m_Animator.Play("Start");
@@ -174,25 +178,23 @@ public class SimpleRifleController : MonoBehaviour
 
             Debug.DrawRay(ray.origin, Camera.main.transform.forward * 100f, Color.red, Mathf.Infinity);
             
+           
             
-            if ( LayerMask.LayerToName(hit.collider.gameObject.layer) == "Animal" && !isFired)
-            //if (hit.collider.CompareTag("Dear") && !isFired)
+            if ( LayerMask.LayerToName(hit.collider.gameObject.layer) == "Animal" && !isFired)      
             {
                 Debug.Log("Hit Animal");
-                //firstBulletEffectCam.gameObject.SetActive(false);
 
-                Player.SetActive(false);
+                //Player.SetActive(false);
                 Ui.SetActive(false);
                 BulletAudioSource.PlayOneShot(BulletAudioClip);
-                
-                
-                    StartCoroutine(FireEffecTrue(hit));
-                
-                
+
+                // StartCoroutine(FireEffecTrue(hit));
+                CheckToShoot(hit);
+
+
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().StopAllCoroutines();
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().SetNavMeshAgentSpeed(0);
-               // hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<NavMeshAgent>().speed = 0;
-                
+              
                
                 StartCoroutine(DelayedFire());
                 //StartCoroutine(CameraOn());
@@ -341,10 +343,10 @@ public class SimpleRifleController : MonoBehaviour
     }
     #endregion
 
-    public IEnumerator CameraOn()
+    public IEnumerator CameraOn(Camera animalCamera)
     {
-
         yield return new WaitForSeconds(5f);
+        animalCamera.gameObject.SetActive(false);
         BulletEffectCam.enabled = false;
         Player.SetActive(true);
         
@@ -352,8 +354,8 @@ public class SimpleRifleController : MonoBehaviour
         SecondGun.SetActive(false);
         //m_Animator.enabled = true;
         //ScopeOut();
-        
 
+        LevelManager.instance.LevelClearCheck();
         Debug.Log("Restting player");
     }
 
@@ -379,6 +381,7 @@ public class SimpleRifleController : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene(1);
+        Destroy(LevelManager.instance.gameObject);
     }
 
     IEnumerator AnimationScopeOut()
@@ -386,6 +389,7 @@ public class SimpleRifleController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         enableScope.SetActive(false);
         m_Animator.SetTrigger("ScopeOut");
+
     }
     IEnumerator AnimationScopeIn()
     {
@@ -399,6 +403,37 @@ public class SimpleRifleController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         isFired = false;
+    }
+
+
+
+    //This function decides whether to shoot normaly or with Bullet Motion
+    void CheckToShoot(RaycastHit hit)
+    {
+        bool isFrontPart = hit.collider.GetComponent<AnimalHit>().partPosition == AnimalPartPosition.Front;
+        bool isCriticalHealth = hit.transform.root.GetComponent<Animals>().health <= 30;
+
+        if (isFrontPart || isCriticalHealth)
+        {
+            StartCoroutine(FireEffecTrue(hit));
+            Player.SetActive(false);
+        }
+        else
+        {
+            SpawnBulletAndAddForce(hit);
+            
+        }
+    }
+
+
+    void SpawnBulletAndAddForce(RaycastHit hit)
+    {
+        Shootedbullet = Instantiate(mainBullet, bulletSpawnTransform.position, Quaternion.identity);
+        Shootedbullet.transform.LookAt(hit.point, Vector3.up);
+        Rigidbody bulletRB = Shootedbullet.GetComponent<Rigidbody>();
+
+        BulletTimeScriptableObject bulletTimeSo = TheBox.BulletTimeManager.instance.bulletTimeValues;
+        bulletRB.AddForce(bulletTimeSo.bulletSpeedNormalMotion * bulletRB.mass * Shootedbullet.transform.forward);
     }
 }
 
