@@ -48,6 +48,26 @@ public abstract class Animals : MonoBehaviour
 
     public WeakPoints weakPoints;
 
+    public float updateInterval = 1f; // Time in seconds between updates
+    private float timer;
+    private bool checkIfPlayerMoving;
+    public void Update()
+    {
+        if (checkIfPlayerMoving)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                if (player != null)
+                {
+                    navMeshAgent.SetDestination(player.transform.position);
+                }
+                timer = updateInterval;
+            }
+        }
+
+    }
+
     public virtual Vector3 GetRandomNavMeshPosition(Vector3 origin, float distance)
     {
         Vector3 randomDirection = Random.insideUnitSphere * distance;
@@ -105,35 +125,41 @@ public abstract class Animals : MonoBehaviour
 
         while (currentState == AnimalState.Attack)
         {
-            yield return null;
-
             // If the player moves during the attack, follow them
             if (Vector3.Distance(player.transform.position, previousPlayerPosition) > 0.1f)
             {
+                Debug.Log("Player Moved While Animal is Attacking");
                 // Set the destination to the player's position
+                navMeshAgent.ResetPath();
                 navMeshAgent.SetDestination(player.transform.position);
+                previousPlayerPosition = player.transform.position;
+                //transform.LookAt(player.transform);
+                SetState(AnimalState.Run);
+                break;
             }
 
-            previousPlayerPosition = player.transform.position;
+            yield return null;
         }
     }
 
     public virtual IEnumerator WaitForAttack()
     {
-        // Wait until the path is completely calculated
-        yield return new WaitUntil(() => navMeshAgent.pathPending);
 
-        Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
-        Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
+        //Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
+        //Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
+
+        checkIfPlayerMoving = true;
 
         // Continuously check if the agent is within attack range
         while (true)
         {
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 2)
+
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 1)
             {
                 navMeshAgent.ResetPath();
                 if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
                 {
+                    checkIfPlayerMoving = false;
                     // Then Changing the state to attack player
                     Debug.Log("Starting to attack system");
                     SetState(AnimalState.Attack);
@@ -143,6 +169,8 @@ public abstract class Animals : MonoBehaviour
             yield return null; // Wait a frame before checking again
         }
     }
+
+
 
     public virtual IEnumerator WaitForFlee(int maxRepetitions = 3)
     {
@@ -190,11 +218,11 @@ public abstract class Animals : MonoBehaviour
 
 }
 public enum AnimalState
-    {
-        Idle,
-        Walk,
-        Run,
-        Death,
-        Attack,
-        Wounded
-    }
+{
+    Idle,
+    Walk,
+    Run,
+    Death,
+    Attack,
+    Wounded
+}

@@ -2891,9 +2891,10 @@ MonoBehaviour:
   health: 90
   animalName: Hippo
   GotoAttackMode: 0
-  isAlive: 0
+  isAlive: 1
   player: {fileID: 0}
   weakPoints: {fileID: 5821949518704006238}
+  updateInterval: 1
   nearPlayerDistance: 2
 --- !u!114 &1297618457688427784
 MonoBehaviour:

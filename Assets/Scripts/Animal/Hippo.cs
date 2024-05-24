@@ -84,7 +84,7 @@ public class Hippo : Animals
         int randomNo = Random.Range(0, 100);
 
         //if randomNo is less than 50 then animal will attack otherwise it will Flee.
-        bool ShouldAttack = randomNo < 10 ? true : false; 
+        bool ShouldAttack = randomNo < 90 ? true : false; 
 
         Vector3 targetPosition = Vector3.zero;
 

@@ -27,7 +27,8 @@ public class WeakPointIndicator : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
             {
-                if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Animal")
+                if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Animal"
+                    && hit.transform.root.GetComponent<Animals>().isAlive)
                 {
                     WeakPoints hitanimal = hit.transform.root.GetComponent<WeakPoints>();
                     if (hitanimal != lastHitAnimals)

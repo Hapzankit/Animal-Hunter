@@ -66,7 +66,7 @@ namespace HapzsoftGames
 
         public virtual void CheckToKill(SimpleRifleController simpleRifleController)
         {
-
+            animal.isAlive = false;
             animator.SetBool("IsDead", true);
             animator.SetBool("IsIdle", false);
             animator.SetBool("IsWalking", false);

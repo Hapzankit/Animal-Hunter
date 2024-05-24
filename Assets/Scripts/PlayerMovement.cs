@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private float minX = 75f;
     private float maxX = 85f;
 
+    public bool isMoving;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -29,16 +31,20 @@ public class PlayerMovement : MonoBehaviour
     public void StartMovingLeft()
     {
         moveDirection = Vector3.left;
+        isMoving = true;
     }
 
     public void StartMovingRight()
     {
         moveDirection = Vector3.right;
+        isMoving = true;
     }
 
     public void StopMoving()
     {
         moveDirection = Vector3.zero;
+        isMoving = false;
+
     }
 
     private void Move()

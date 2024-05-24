@@ -114,7 +114,7 @@ namespace TheBox
             bulletTimeInstance = Instantiate(BulletTimePrefab, startPoint , Quaternion.identity);
             Debug.Log("Buller look at target" + ray.collider.transform.root.name);
 
-            bulletTimeInstance.transform.LookAt(ray.collider.transform, Vector3.up);
+            bulletTimeInstance.transform.LookAt(ray.point, Vector3.up);
 
             
             bulletTimeCameraInstance = Instantiate(BulletTimeCameraPrefab, startPoint, Quaternion.identity);
