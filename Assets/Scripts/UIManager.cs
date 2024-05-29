@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverScreen;
 
+    public TMP_Text AmmoOverText;
+
     private void Awake()
     {
         if(instance == null)

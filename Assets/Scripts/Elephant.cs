@@ -40,12 +40,15 @@ public class Elephant : Animals
             case AnimalState.Wounded:
                 HandleWoundedState();
                 break;
+            default:
+                Debug.Log("Death happened");
+                break;
         }
     }
 
     public override void HandleWoundedState()
     {
-        Debug.Log("Animal is Wounded set the player destination");
+       // Debug.Log("Animal is Wounded set the player destination");
         navMeshAgent.ResetPath();
 
         int randomNo = Random.Range(0, 100);
@@ -68,16 +71,18 @@ public class Elephant : Animals
 
         //Either Flee for Attack the player
         navMeshAgent.SetDestination(targetPosition);
-        Debug.Log("current Navmesh speed");
+        //Debug.Log("current Navmesh speed");
         SetNavMeshAgentSpeed(runSpeed);
-        Debug.Log("after wounded Navmesh speed");
+        //Debug.Log("after wounded Navmesh speed");
         SetState(AnimalState.Run);
 
     }
     public override void HandleAttackState()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
+        
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+       
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 100);
 
         player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
@@ -102,45 +107,6 @@ public class Elephant : Animals
 
     protected virtual void HandleDeathState()
     {
-    }
-
-    
-    private IEnumerator WaitToMove()
-    {
-        float waitTime = Random.Range(idleTime / 2, idleTime * 2);
-        yield return new WaitForSeconds(waitTime);
-
-        Vector3 randomDestination = GetRandomNavMeshPosition(transform.position, wanderDistance);
-        //Debug.Log("New Destination" + randomDestination);
-        navMeshAgent.SetDestination(randomDestination);
-        SetState(AnimalState.Walk);
-    }
-
-    private IEnumerator WaitToReachDestination()
-    {
-        yield return new WaitUntil(() => navMeshAgent.pathPending);
-        //Debug.Log("Path calculated");
-        float startTime = Time.time;
-        // Debug.Log("Distance Remaining " + (navMeshAgent.remainingDistance));
-
-        while (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
-        {
-
-
-            if (Time.time - startTime >= maxWalkTime)
-            {
-                navMeshAgent.ResetPath();
-
-                //Debug.Log("walk time is over ");
-                SetState(AnimalState.Idle);
-                yield break;
-            }
-
-            yield return null;
-        }
-
-        // Destination has been reached
-        SetState(AnimalState.Idle);
     }
 
     private IEnumerator WaitToRun()
@@ -171,16 +137,5 @@ public class Elephant : Animals
     }
 
 
-    public override void OnStateChanged(AnimalState newState)
-    {
-        UpdateState();
-        // Switch based on the new state to set Animator parameters
-
-        animator.SetBool("IsIdle", newState == AnimalState.Idle);
-        animator.SetBool("IsWalking", newState == AnimalState.Walk);
-        animator.SetBool("IsRunning", newState == AnimalState.Run);
-        animator.SetBool("IsAttacking", newState == AnimalState.Attack);
-        animator.ResetTrigger("IsDead");
-
-    }
+    
 }

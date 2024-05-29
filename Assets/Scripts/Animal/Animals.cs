@@ -21,6 +21,8 @@ public abstract class Animals : MonoBehaviour
 
     public Animator animator;
 
+    public RagdollOnOff ragdollOnOff;
+
     public float health = 90;
     public string animalName;
 
@@ -38,9 +40,6 @@ public abstract class Animals : MonoBehaviour
     public abstract void HandleRunState();
 
     public abstract void SetState(AnimalState newState);
-
-    public abstract void OnStateChanged(AnimalState newState);
-
     public abstract void HandleAttackState();
     public abstract void HandleWoundedState();
 
@@ -178,11 +177,11 @@ public abstract class Animals : MonoBehaviour
 
         while (currentRepetition < maxRepetitions)
         {
-            // Wait until the path is completely calculated
+            
             yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
-            Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
-            Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
+           // Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
+           // Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
 
             // Continuously check if the agent is within attack range
             while (true)
@@ -195,11 +194,11 @@ public abstract class Animals : MonoBehaviour
                         currentRepetition++;
                         Vector3 targetPosition = GetRandomNavMeshPosition(transform.position, wanderDistance);
                         navMeshAgent.SetDestination(targetPosition);
-                        Debug.Log($"Repetition {currentRepetition} completed.");
-                        break; // Break the loop if the agent reaches its destination
+                        //Debug.Log($"Repetition {currentRepetition} completed.");
+                        break; 
                     }
                 }
-                yield return null; // Wait a frame before checking again
+                yield return null; 
             }
         }
 
@@ -214,8 +213,57 @@ public abstract class Animals : MonoBehaviour
         navMeshAgent.speed = speedAmount;
     }
 
+    public virtual void OnStateChanged(AnimalState newState)
+    {
+        UpdateState();
 
 
+        //Debug.Log("animation state " + newState.ToString());
+        // Switch based on the new state to set Animator parameters
+
+        if(newState == AnimalState.Death)
+        {
+            animator.SetFloat("Dead Animation", Random.Range(0, 2));
+        }
+
+        animator.SetBool("IsIdle", newState == AnimalState.Idle);
+        animator.SetBool("IsWalking", newState == AnimalState.Walk);
+        animator.SetBool("IsRunning", newState == AnimalState.Run);
+        animator.SetBool("IsAttacking", newState == AnimalState.Attack);
+        animator.SetBool("IsDead",  newState == AnimalState.Death);
+    }
+
+    public virtual IEnumerator WaitToMove()
+    {
+        float waitTime = Random.Range(idleTime / 2, idleTime * 2);
+        yield return new WaitForSeconds(waitTime);
+        Vector3 randomDestination = GetRandomNavMeshPosition(transform.position, wanderDistance);
+        //Debug.Log("New Destination" + randomDestination);
+        navMeshAgent.SetDestination(randomDestination);
+        SetState(AnimalState.Walk);
+    }
+
+    public virtual IEnumerator WaitToReachDestination()
+    {
+        yield return new WaitUntil(() => !navMeshAgent.pathPending);
+        //Debug.Log("Path calculated");
+        float startTime = Time.time;
+        // Debug.Log("Distance Remaining " + (navMeshAgent.remainingDistance));
+
+        while (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+        {
+            if (Time.time - startTime >= maxWalkTime)
+            {
+                navMeshAgent.ResetPath();
+                //Debug.Log("walk time is over ");
+                SetState(AnimalState.Idle);
+                yield break;
+            }
+            yield return null;
+        }
+        // Destination has been reached
+        SetState(AnimalState.Idle);
+    }
 }
 public enum AnimalState
 {

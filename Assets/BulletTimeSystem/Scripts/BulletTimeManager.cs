@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using HapzsoftGames;
 using System.Collections;
 using UnityEngine;
@@ -112,15 +113,13 @@ namespace TheBox
         {
             print("rotation : " + bulletRotation.transform.rotation.y);
             bulletTimeInstance = Instantiate(BulletTimePrefab, startPoint , Quaternion.identity);
-            Debug.Log("Buller look at target" + ray.collider.transform.root.name);
+            //Debug.Log("Bullet look at target" + ray.point);
 
-            bulletTimeInstance.transform.LookAt(ray.point, Vector3.up);
+            bulletTimeInstance.transform.DOLookAt(ray.point, 0.1f);
 
-            
+            //bulletTimeInstance.transform.LookAt(ray.point, Vector3.up);
+
             bulletTimeCameraInstance = Instantiate(BulletTimeCameraPrefab, startPoint, Quaternion.identity);
-            
-            //bulletTimeCameraInstance.GetComponent<BulletTimeEffectController>().hitRay = ray;  //added by smit
-            //bulletTimeCameraInstance.GetComponent<BulletTimeEffectController>().isInBulletTime = true;  //added by smit
 
             bulletTimeCameraInstance.transform.LookAt(ray.point, Vector3.up);
 
@@ -135,19 +134,14 @@ namespace TheBox
             print("Shoot");
             bulletVirtualCameraInstance = bulletTimeCameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
 
-            //targetVirtualCameraInstance = targetCameraInstance.GetComponentInChildren<CinemachineVirtualCamera>();
-
             bulletDollyCartInstance = bulletTimeCameraInstance.GetComponentInChildren<CinemachineDollyCart>();
-            //targetDollyCartInstance = targetCameraInstance.GetComponentInChildren<CinemachineDollyCart>();
+           
         }
 
         void AssigneCameraLookAt()
         {
-            //bulletVirtualCameraInstance.LookAt = LookAtTarget;
             bulletVirtualCameraInstance.LookAt = bulletTimeInstance.transform;
-            bulletVirtualCameraInstance.Follow = bulletTimeInstance.transform;
-         
-            //targetVirtualCameraInstance.LookAt = LookAtTarget;
+            bulletVirtualCameraInstance.Follow = bulletTimeInstance.transform; 
         }
 
         private void Update()
@@ -215,8 +209,8 @@ namespace TheBox
         void ApplyForce()
         {
             bulletTimeInstance.TryGetComponent(out Rigidbody bulletRigidBody);
-            bulletRigidBody.AddForce(
-                bulletTimeValues.bulletSpeedBulletMotion * bulletRigidBody.mass * bulletTimeInstance.transform.forward);
+            Vector3 direction = (ray.point - bulletTimeInstance.transform.position).normalized;
+            bulletRigidBody.AddForce(bulletTimeValues.bulletSpeedBulletMotion * bulletRigidBody.mass * direction);
         }
 
         /// <summary>

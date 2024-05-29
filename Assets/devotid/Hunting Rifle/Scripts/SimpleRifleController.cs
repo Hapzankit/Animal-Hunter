@@ -26,6 +26,7 @@ public class SimpleRifleController : MonoBehaviour
     [SerializeField]
     public int ReloadAmount = 3; //This is the amount of ammo to reload
     public int CurrentAmountOfAmmo = 1; //Current amount of Ammo in the Rifle
+    private int WeaponAmmoCapacity;
     [SerializeField] private float scopeFOVChangeSpeed;
     [SerializeField] private float minScopeFOV;
     [SerializeField] private float maxScopeFOV;
@@ -74,7 +75,7 @@ public class SimpleRifleController : MonoBehaviour
     public AudioSource BulletAudioSource;
     public AudioClip BulletAudioClip;
     private bool isFired;
-  
+    public SOWeapons SOWeapon;
 
     GameObject Shootedbullet;
     [SerializeField] GameObject mainBullet;
@@ -82,6 +83,8 @@ public class SimpleRifleController : MonoBehaviour
     {
         m_Animator.Play("Start");
         MovementController = FindObjectOfType<MovementController>();
+        //WeaponAmmoCapacity = CurrentAmountOfAmmo;
+        CurrentAmountOfAmmo = SOWeapon.WeaponAmmoCapacity;
     }
 
     public bool isCutScene = true;
@@ -173,7 +176,7 @@ public class SimpleRifleController : MonoBehaviour
         RaycastHit hit;
 
         // Check if ray hits something (optional)
-        if (Physics.Raycast(ray, out hit, 200f))
+        if (Physics.Raycast(ray, out hit, 200f) && CurrentAmountOfAmmo > 0)
         {
 
             Debug.DrawRay(ray.origin, Camera.main.transform.forward * 100f, Color.red, Mathf.Infinity);
@@ -194,7 +197,8 @@ public class SimpleRifleController : MonoBehaviour
 
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().StopAllCoroutines();
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animals>().SetNavMeshAgentSpeed(0);
-              
+                
+
                
                 StartCoroutine(DelayedFire());
                 //StartCoroutine(CameraOn());
@@ -215,10 +219,7 @@ public class SimpleRifleController : MonoBehaviour
                     // Assuming hit.point is defined somewhere in your context as the target position
                     StartCoroutine(DelayedFire());
                     // Calculate direction towards hit.point
-                    Vector3 directionToHitPoint = (hit.point - bullet.transform.position).normalized;
-
-                    // You can still calculate a step value if needed for other purposes
-                    // float step = speed * Time.deltaTime;
+                    Vector3 directionToHitPoint = (hit.point - bullet.transform.position).normalized;                    
 
                     // Get the Rigidbody component of the bullet
                     Rigidbody bulletRigidBody = bullet.GetComponent<Rigidbody>();
@@ -227,19 +228,22 @@ public class SimpleRifleController : MonoBehaviour
                     // Adjust the force multiplier (4000 in this case) as needed
                     bulletRigidBody.AddForce(4000 * bulletRigidBody.mass * directionToHitPoint);
 
-                    
+                    CheckToRelaod();
+
                 }
 
             }
         }
         else
         {
-            if (!isFired)
+            if (!isFired && CurrentAmountOfAmmo > 0)
             {
                 BulletAudioSource.PlayOneShot(BulletAudioClip);
                 FireRifle();
                 StartCoroutine(DelayedFire());
-            }               
+                CheckToRelaod();
+
+            }
         }
     }
 
@@ -266,12 +270,7 @@ public class SimpleRifleController : MonoBehaviour
         //Time.timeScale = 0.1f;
         SecondGun.SetActive(true);
         //firstBulletEffectCam.enabled = true;
-        
-        
-        //GameObject bullet = Instantiate(demoBullet, SecondbulletSpawnTransform.position, Quaternion.identity);
-        //Rigidbody bulletRigidBody = bullet.GetComponent<Rigidbody>();
-        //bulletRigidBody.AddForce(
-        //10 * bulletRigidBody.mass * bulletRigidBody.transform.forward);
+   
         yield return new WaitForSeconds(0.5f);
         //bullet.SetActive(false);
         StartCoroutine(BulletMotion(hit));
@@ -370,6 +369,7 @@ public class SimpleRifleController : MonoBehaviour
         //m_Animator.enabled = true;
         ResetBulletEffectCam();
         ScopeOut();
+        CheckToRelaod();
     }
 
     void ResetBulletEffectCam()
@@ -410,10 +410,14 @@ public class SimpleRifleController : MonoBehaviour
     //This function decides whether to shoot normaly or with Bullet Motion
     void CheckToShoot(RaycastHit hit)
     {
+        CurrentAmountOfAmmo--;
+        
+
         bool isFrontPart = hit.collider.GetComponent<AnimalHit>().partPosition == AnimalPartPosition.Front;
         bool isCriticalHealth = hit.transform.root.GetComponent<Animals>().health <= 30;
+        bool isFirstHitToAnimal = hit.transform.root.GetComponent<Animals>().health >= 90;
 
-        if (isFrontPart || isCriticalHealth)
+        if (isFrontPart || isCriticalHealth || isFirstHitToAnimal)
         {
             StartCoroutine(FireEffecTrue(hit));
             Player.SetActive(false);
@@ -434,6 +438,31 @@ public class SimpleRifleController : MonoBehaviour
 
         BulletTimeScriptableObject bulletTimeSo = TheBox.BulletTimeManager.instance.bulletTimeValues;
         bulletRB.AddForce(bulletTimeSo.bulletSpeedNormalMotion * bulletRB.mass * Shootedbullet.transform.forward);
+    }
+
+
+    public void ReloadWeapon()
+    {   
+        if(ReloadAmount > 0)
+        {
+            int ammoToAdd = ReloadAmount - SOWeapon.WeaponAmmoCapacity;
+            CurrentAmountOfAmmo = ammoToAdd > 0 ? SOWeapon.WeaponAmmoCapacity : ReloadAmount ;
+            ReloadAmount -= SOWeapon.WeaponAmmoCapacity;
+        }
+        else
+        {
+            UIManager.instance.gameOverScreen.SetActive(true);
+            UIManager.instance.AmmoOverText.gameObject.SetActive(true);
+        }
+    }
+
+
+    private void CheckToRelaod()
+    {
+        if(CurrentAmountOfAmmo <= 0)
+        {
+            ReloadWeapon();
+        }
     }
 }
 

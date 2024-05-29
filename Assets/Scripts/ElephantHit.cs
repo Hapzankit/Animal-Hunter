@@ -20,7 +20,8 @@ namespace HapzsoftGames
                 //CameraHit.gameObject.SetActive(true);
 
                 //  Destroy(collision.gameObject);
-                blood = Instantiate(BloodPrefab, new Vector3(other.transform.position.x - 0.2f, other.transform.position.y, other.transform.position.z), Quaternion.identity);
+                Vector3 bloodpos = new Vector3(other.transform.position.x - 0.2f, other.transform.position.y, other.transform.position.z);
+                blood = Instantiate(BloodPrefab, bloodpos, Quaternion.identity);
                 blood.transform.SetParent(hitpos.transform);
                 //StartCoroutine(AnimationDelay());
 

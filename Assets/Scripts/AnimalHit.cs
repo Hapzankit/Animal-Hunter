@@ -1,6 +1,4 @@
-using FirstPersonMobileTools.DynamicFirstPerson;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -67,9 +65,14 @@ namespace HapzsoftGames
         public virtual void CheckToKill(SimpleRifleController simpleRifleController)
         {
             animal.isAlive = false;
-            animator.SetBool("IsDead", true);
-            animator.SetBool("IsIdle", false);
-            animator.SetBool("IsWalking", false);
+            //animator.SetFloat("Dead Animation", Random.Range(0, 2));
+           // animator.SetBool("IsDead", true);
+            //animator.SetBool("IsIdle", false);
+            //animator.SetBool("IsWalking", false);
+
+            animal.SetState(AnimalState.Death);
+            //animal.ragdollOnOff.RagDollModeOn();
+
             simpleRifleController.StartCoroutine(simpleRifleController.CameraOn(CameraHit));
             Debug.Log("Animal is dead");
             LevelManager.instance.shootedAnimal = gameObject.tag;
@@ -86,8 +89,19 @@ namespace HapzsoftGames
             float newHealth = animal.health / 90;
             Debug.Log("The health of the hippo left is " + newHealth);
 
-            animal_health_bar.DOFillAmount(newHealth, 0.5f).OnComplete(DisableHealthBar); //Here later on instead of 100 that totla health animal will come 
-                                                                                        //Currently used 100 because all animals have 100 as a total health.
+            animal_health_bar.transform.parent.gameObject.SetActive(true);
+
+            if(animal.health == 30)
+            {
+                animal_health_bar.transform.parent.LookAt(Camera.main.transform);
+            }
+            else
+            {
+                animal_health_bar.transform.parent.LookAt(CameraHit.transform);
+            }
+
+            animal_health_bar.DOFillAmount(newHealth, 0.5f).OnComplete(DisableHealthBar); 
+                                                                                        
            
         }
 
@@ -101,10 +115,10 @@ namespace HapzsoftGames
         }
         void DisableHealthBar()
         {
-            if(animal.health <= 1)
-            {
+           // if(animal.health <= 1)
+           // {
                 animal_health_bar.transform.parent.gameObject.SetActive(false);
-            }
+           // }
         }
     }
 

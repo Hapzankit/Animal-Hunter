@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class RagdollOnOff : MonoBehaviour
 {
-    public BoxCollider[] maincollider;
-    public BoxCollider mainGameobjectcollider;
-    public GameObject objectRig;
-    public Animator objectAnimator;
+    [SerializeField] 
+    BoxCollider[] maincollider;
+    
+    [SerializeField] 
+    Animator objectAnimator;
+
+    [SerializeField] 
+    Collider[] ragDollCollider;
+
+    [SerializeField]
+    Rigidbody[] ragDollRigidbody;
 
     private void Start()
     {
-        GetRagDollBits();
+        //GetRagDollBits();
         RagDollModeOff();
     }
 
@@ -24,53 +31,26 @@ public class RagdollOnOff : MonoBehaviour
         }
     }
 
-    Collider[] ragDollCollider;
-    Rigidbody[] ragDollRigidbody;
-
-    private void GetRagDollBits()
-    {
-        ragDollCollider = objectRig.GetComponentsInChildren<Collider>();
-        ragDollRigidbody = objectRig.GetComponentsInChildren<Rigidbody>();
-    }
-
     public void RagDollModeOn()
     {
         objectAnimator.enabled = false;
 
-        foreach (Collider col in ragDollCollider)
-        {
-            col.enabled = true;
-        }
+        foreach (Collider col in ragDollCollider) {col.enabled = true;}
 
-        foreach (Rigidbody rigid in ragDollRigidbody)
-        {
-            rigid.isKinematic = false;
-        }
+        foreach (Rigidbody rigid in ragDollRigidbody) {rigid.isKinematic = false;}
 
-        //maincollider[0].enabled = true;
-        //maincollider[1].enabled = true;
-        //maincollider[2].enabled = true;
-        mainGameobjectcollider.enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        foreach (Collider col in maincollider) { col.enabled = false; }     
     }
 
     public void RagDollModeOff()
     {
-        foreach (Collider col in ragDollCollider)
-        {
-            col.enabled = false;
-        }
+        foreach (Collider col in ragDollCollider) {col.enabled = false;}
 
-        foreach (Rigidbody rigid in ragDollRigidbody)
-        {
-            rigid.isKinematic = true;
-        }
-
-        mainGameobjectcollider.enabled = true;
-        //maincollider[0].enabled = true;
-        //maincollider[1].enabled = true;
-        //maincollider[2].enabled = true;
+        foreach (Rigidbody rigid in ragDollRigidbody) {rigid.isKinematic = true;}
+        
+        foreach (Collider col in maincollider) { col.enabled = true; }
+        
         objectAnimator.enabled = true;
-        GetComponent<Rigidbody>().isKinematic = false;
+       
     }
 }

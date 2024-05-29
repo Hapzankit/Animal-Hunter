@@ -6,7 +6,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -52,6 +51,10 @@ public class Hippo : Animals
             case AnimalState.Wounded:
                 HandleWoundedState();
                 break;
+            default:
+                Debug.Log("Death happened");
+                break;
+
         }
     }
 
@@ -68,23 +71,22 @@ public class Hippo : Animals
 
     public override void HandleRunState()
     {
-       //IF animal needs to flee
+      
         StartCoroutine(nameof(WaitToRun));
-        Debug.Log("Ainmal runing");
-       //IF animal needs to attack
-       //StartCoroutine()
+       // Debug.Log("Ainmal runing");
+      
 
     }
 
     public override void HandleWoundedState()
     {
-        Debug.Log("Animal is Wounded set the player destination");
+       // Debug.Log("Animal is Wounded set the player destination");
         navMeshAgent.ResetPath();
 
         int randomNo = Random.Range(0, 100);
 
         //if randomNo is less than 50 then animal will attack otherwise it will Flee.
-        bool ShouldAttack = randomNo < 90 ? true : false; 
+        bool ShouldAttack = randomNo < 10 ? true : false; 
 
         Vector3 targetPosition = Vector3.zero;
 
@@ -101,9 +103,9 @@ public class Hippo : Animals
 
         //Either Flee for Attack the player
         navMeshAgent.SetDestination(targetPosition);   
-        Debug.Log("current Navmesh speed");
+        //Debug.Log("current Navmesh speed");
         SetNavMeshAgentSpeed(runSpeed);
-        Debug.Log("after wounded Navmesh speed");
+       // Debug.Log("after wounded Navmesh speed");
         SetState(AnimalState.Run);
 
     }
@@ -117,53 +119,16 @@ public class Hippo : Animals
         player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
 
         StartCoroutine(WaitForPlayerMovement());
-
     }
 
-    private IEnumerator WaitToMove()
-    {
-        float waitTime = Random.Range(idleTime/2, idleTime*2);
-        yield return new WaitForSeconds(waitTime);
-
-        Vector3 randomDestination = GetRandomNavMeshPosition(transform.position, wanderDistance);
-        //Debug.Log("New Destination" + randomDestination);
-        navMeshAgent.SetDestination(randomDestination);
-        SetState(AnimalState.Walk);
-    }
-
-    private IEnumerator WaitToReachDestination()
-    {
-        yield return new WaitUntil(() => navMeshAgent.pathPending);
-        //Debug.Log("Path calculated");
-        float startTime = Time.time;
-       // Debug.Log("Distance Remaining " + (navMeshAgent.remainingDistance));
-
-        while (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
-        {
-           
-           
-            if(Time.time - startTime >= maxWalkTime)
-            {
-                navMeshAgent.ResetPath();
-
-                //Debug.Log("walk time is over ");
-                SetState(AnimalState.Idle);
-                yield break;
-            }
-
-            yield return null;
-        }
-
-        // Destination has been reached
-        SetState(AnimalState.Idle);
-    }
+    
 
     private IEnumerator WaitToRun()
     {
         // Wait until the path is completely calculated
         //yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
-        yield return new  WaitUntil(() => navMeshAgent.pathPending);
+        yield return new  WaitUntil(() => !navMeshAgent.pathPending);
 
         if (GotoAttackMode)
         {
@@ -179,6 +144,7 @@ public class Hippo : Animals
 
     public override void SetState(AnimalState newState)
     {
+        //Debug.Log("changing the state " + newState.ToString());
         if (currentState == newState)
         {
             //Debug.Log("getting same as previous state " + newState);
@@ -186,27 +152,8 @@ public class Hippo : Animals
         }
 
         currentState = newState;
-        //Debug.Log("changing the state " + newState.ToString());
         OnStateChanged(newState);
     }
 
 
-
-    public override void OnStateChanged(AnimalState newState)
-    {
-        UpdateState();
-
-        //Debug.Log("animation state " + newState.ToString());
-
-        // Switch based on the new state to set Animator parameters
-
-        animator.SetBool("IsIdle", newState == AnimalState.Idle);
-        animator.SetBool("IsWalking", newState == AnimalState.Walk);
-        animator.SetBool("IsRunning", newState == AnimalState.Run);
-        animator.SetBool("IsAttacking", newState == AnimalState.Attack);
-        animator.ResetTrigger("IsDead");
-        
-    }
-
-    
 }
