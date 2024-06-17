@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace FirstPersonMobileTools.DynamicFirstPerson
 {
@@ -41,6 +42,8 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
 
         public Vector2 delta = Vector2.zero;
         private Vector2 currentDelta = Vector2.zero; // Current delta used for smooth transition
+
+  
 
         private void Start()
         {
@@ -96,6 +99,8 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
 
             // Reset target delta after applying it
             delta = Vector2.zero;
+
+            
         }
 
         public void OnChangeSettings()
@@ -115,6 +120,8 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
                     m_IsTouchAvailable = (Touch touch) => { return m_AvailableTouchesId.Contains(touch.fingerId.ToString()); };
                     break;
             }
+
+           
         }
 
         public void SetMode(int value)
@@ -131,6 +138,11 @@ namespace FirstPersonMobileTools.DynamicFirstPerson
                     m_TouchDetectMode = TouchDetectMode.FirstTouch;
                     break;
             }
+
+          
         }
+
+        
     }
+    
 }

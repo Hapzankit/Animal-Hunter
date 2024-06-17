@@ -502,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7762882006260543483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -580,6 +580,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
+      propertyPath: m_TagString
+      value: Elephant
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_Layer
@@ -775,31 +779,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.9
+      value: 70.33063
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.91
+      value: 0.9100001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 138.7
+      value: 158.727
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.73695916
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.6759373
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -807,7 +811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 85.054
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 319a290c12cc6b74d8cdd431806b8dc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -883,17 +887,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 1314765820235793582}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 5
+  m_Radius: 2.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0
+  m_BaseOffset: 0.04
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1072886172779224800
@@ -916,12 +920,19 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   currentState: 0
   animator: {fileID: 1314765820226418542}
+  ragdollOnOff: {fileID: 0}
   health: 90
   animalName: Elephant
   GotoAttackMode: 0
   isAlive: 1
   player: {fileID: 0}
   weakPoints: {fileID: 2857498317863075367}
+  updateInterval: 1
+  DisappearWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  canAttack: 0
 --- !u!114 &2857498317863075367
 MonoBehaviour:
   m_ObjectHideFlags: 0

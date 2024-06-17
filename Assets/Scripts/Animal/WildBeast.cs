@@ -43,7 +43,7 @@ public class WildBeast : Animals
     public override void HandleAttackState()
     {
 
-       // player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
+        // player.GetComponentInChildren<PlayerStats>().TakeDamage(20);
 
     }
 
@@ -71,18 +71,18 @@ public class WildBeast : Animals
 
     }
 
-    private IEnumerator WaitToMove()
+    public override IEnumerator WaitToMove()
     {
         float waitTime = Random.Range(idleTime / 2, idleTime * 2);
         yield return new WaitForSeconds(waitTime);
 
         Vector3 randomDestination = GetRandomNavMeshPosition(transform.position, wanderDistance);
-        
+
         navMeshAgent.SetDestination(randomDestination);
         SetState(AnimalState.Walk);
     }
 
-    private IEnumerator WaitToReachDestination()
+    public override IEnumerator WaitToReachDestination()
     {
         float startTime = Time.time;
 
@@ -149,6 +149,20 @@ public class WildBeast : Animals
                 animator.SetBool("IsIdle", false);
                 animator.ResetTrigger("IsDead");
                 break;
+        }
+    }
+
+    public override void ReactToGunshot()
+    {
+        if (isAlive)
+        {
+            Debug.Log("ReactoGun called" + gameObject.name);
+
+            //    StopAllCoroutines();
+            //    currentState = AnimalState.Wounded;
+            //    UpdateState();
+            //}
+
         }
     }
 }

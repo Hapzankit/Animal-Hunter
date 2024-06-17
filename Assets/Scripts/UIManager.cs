@@ -5,10 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
+
 public class UIManager : MonoBehaviour
 {
     public TMP_Text taskText ;
 
+    public TMP_Text levelClearText;
+
+    public TMP_Text AmmoOverText;
+
+    public TMP_Text timerText;
+    
     public static UIManager instance;
 
     public GameObject LevelClearScreen;
@@ -17,13 +24,18 @@ public class UIManager : MonoBehaviour
     
     public GameObject loadingScreen;
 
-    public TMP_Text levelClearText;
-
     public Image loadingImage;
 
     public GameObject gameOverScreen;
 
-    public TMP_Text AmmoOverText;
+
+    [SerializeField] TMP_Text bulletRemainText, bulletReloadReamainAmountText;
+    
+
+    public GameObject GameWonButton;
+
+
+    public LevelTimer levelTimer;
 
     private void Awake()
     {
@@ -46,43 +58,26 @@ public class UIManager : MonoBehaviour
     {
         LevelClearScreen.SetActive(true);
         nextLevelButon.onClick.AddListener(() => LoadNextLevel(LevelNames));
+
+        //Stopping the level timer
+        levelTimer.timerIsRunning = false;
+    }
+    
+    public void GameWonScreen()
+    {
+        LevelClearScreen.SetActive(true);
+        nextLevelButon.gameObject.SetActive(false);
+        GameWonButton.SetActive(true);
     }
 
     private void LoadNextLevel(string LevelName)
     {
-        StartCoroutine(LoadLevelAsync2(LevelName));
+        StartCoroutine(LoadLevelAsync(LevelName));
     }
 
-    private IEnumerator LoadLevelAsync(string LevelNames)
+    private IEnumerator LoadLevelAsync(string LevelName)
     {
-        UnityEngine.AsyncOperation operation = SceneManager.LoadSceneAsync(LevelNames);
-        loadingScreen.SetActive(true);
-        while (!operation.isDone)
-        {
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
-            loadingImage.fillAmount = progressValue;
-
-            
-
-            if (operation.progress >= 0.7f)
-            {
-                Debug.Log("Current Progress" + operation.progress);
-                // Wait for the specified delay
-                yield return new WaitForSeconds(5f);
-
-                // Activate the scene
-                operation.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
-
-        
-    }
-
-    private IEnumerator LoadLevelAsync2(string LevelName)
-    {
-        UnityEngine.AsyncOperation operation = SceneManager.LoadSceneAsync(LevelName);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(LevelName);
         operation.allowSceneActivation = false;
 
         loadingScreen.SetActive(true);
@@ -110,4 +105,22 @@ public class UIManager : MonoBehaviour
         }
   
     }
+
+    public void ShowRemainingBullets(int remainingBullets, int totalBullets, int reloadAmount, int totalRemainAmountBullet)
+    {
+        bulletRemainText.text = remainingBullets.ToString() + "/" + totalBullets.ToString();
+        bulletReloadReamainAmountText.text = reloadAmount.ToString() + "/" + totalRemainAmountBullet.ToString();
+    }
+
+    public void GameOver() 
+    {
+        gameOverScreen.SetActive(true);
+       
+    }
+
+    public void UsePunchAnimation(GameObject AnyObject)
+    {
+        Utils.PunchOnButtonClick(AnyObject);
+    }
+
 }

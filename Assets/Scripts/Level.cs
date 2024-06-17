@@ -12,4 +12,6 @@ public class Level : ScriptableObject
 
     public bool isCleard;
 
+
+
 }

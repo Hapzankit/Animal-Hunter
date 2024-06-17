@@ -21,10 +21,10 @@ public class SimpleRifleController : MonoBehaviour
     [Header("Animator")]
     [SerializeField]
     Animator m_Animator;  //Fetches the Animator attached to this game object in the start function
-
     [Header("Integer")]
     [SerializeField]
     public int ReloadAmount = 3; //This is the amount of ammo to reload
+    public  Camera mainCamera;
     public int CurrentAmountOfAmmo = 1; //Current amount of Ammo in the Rifle
     private int WeaponAmmoCapacity;
     [SerializeField] private float scopeFOVChangeSpeed;
@@ -36,26 +36,20 @@ public class SimpleRifleController : MonoBehaviour
     [SerializeField] private float minDistanceToPlayAnimation;
     [SerializeField] private float speed = 10;
     [SerializeField] private Camera cutSceneCamera;
-    [SerializeField] private Camera mainCamera;
     [SerializeField] GameObject playerForCutScene;
     [SerializeField] GameObject mainPlayer;
     [SerializeField] GameObject fpsController;
     [SerializeField] Canvas shootingCanvas;
     [SerializeField] AudioManager audioManager;
-
-
     [Header("Bool")]
     public bool isScopedIn;
-
     [Header("GameObject")]
     public GameObject enableScope;
     public Transform bulletSpawnTransform;
     public Transform SecondbulletSpawnTransform;
-
     public GameObject demoBullet; // Assign in inspector
     [Header("Vectors")]
     public Vector3 upRecoil;
-
     [Header("Camera")]
     public Camera scopeCamera;
     public Scrollbar scopeScrol;
@@ -76,24 +70,29 @@ public class SimpleRifleController : MonoBehaviour
     public AudioClip BulletAudioClip;
     private bool isFired;
     public SOWeapons SOWeapon;
-
     GameObject Shootedbullet;
     [SerializeField] GameObject mainBullet;
+
+    [SerializeField] LevelTimer levelTimer;
+
+
     void Start()
     {
         m_Animator.Play("Start");
         MovementController = FindObjectOfType<MovementController>();
         //WeaponAmmoCapacity = CurrentAmountOfAmmo;
         CurrentAmountOfAmmo = SOWeapon.WeaponAmmoCapacity;
+        ReloadAmount = SOWeapon.ReloadAmount;
+        UIManager.instance.ShowRemainingBullets(CurrentAmountOfAmmo, SOWeapon.WeaponAmmoCapacity, ReloadAmount, SOWeapon.ReloadAmount);
     }
 
     public bool isCutScene = true;
 
-
+    bool calledOnce;
 
     void Update()
     {
-        if(audioManager.played == 0)
+        if(audioManager.played == 0 && !calledOnce)
         {
             if (isCutScene)
             {
@@ -101,30 +100,37 @@ public class SimpleRifleController : MonoBehaviour
                 mainCamera.GetComponent<Camera>().enabled = false;
                 playerForCutScene.gameObject.SetActive(true);
                 mainPlayer.gameObject.SetActive(false);
+                //Debug.Log("Setting UI in Game scene 2");
                 shootingCanvas.gameObject.SetActive(false);
+
                 Guide.SetActive(true);
             }
-            else
-            {
+            else 
+            { 
                 cutSceneCamera.GetComponent<Camera>().enabled = false;
                 mainCamera.GetComponent<Camera>().enabled = true;
                 playerForCutScene.gameObject.SetActive(false);
                 mainPlayer.gameObject.SetActive(true);
                 shootingCanvas.gameObject.SetActive(true);
-               // Guide.SetActive(false);
+                levelTimer.timerIsRunning = true;
+                // Guide.SetActive(false);
+                Debug.Log("Called The Ui ");
+
+                calledOnce = true;
+
             }
         }
         // for cutscene
         
-        else
-        {
-            cutSceneCamera.GetComponent<Camera>().enabled = false;
-            mainCamera.GetComponent<Camera>().enabled = true;
-            playerForCutScene.gameObject.SetActive(false);
-            mainPlayer.gameObject.SetActive(true);
-            shootingCanvas.gameObject.SetActive(true);
-            Guide.SetActive(false);
-        }
+        //else
+        //{
+        //    cutSceneCamera.GetComponent<Camera>().enabled = false;
+        //    mainCamera.GetComponent<Camera>().enabled = true;
+        //    playerForCutScene.gameObject.SetActive(false);
+        //    mainPlayer.gameObject.SetActive(true);
+        //    shootingCanvas.gameObject.SetActive(true);
+        //    Guide.SetActive(false);
+        //}
 
 
 
@@ -148,14 +154,17 @@ public class SimpleRifleController : MonoBehaviour
     #region Shooting
     public void FireRifle()
     {
+
+
         if (isScopedIn)
         {
-            m_Animator.SetTrigger("ScopeInFIre");
+            //m_Animator.SetTrigger("ScopeInFIre");
+            ToggleScope();
             isScopedIn = false;
-            ScopeInBtn.gameObject.SetActive(true);
-            ScopeOutBtn.gameObject.SetActive(false);
-            scopeScrol.gameObject.SetActive(false);
-            StartCoroutine(AnimationScopeOut());
+            //ScopeInBtn.gameObject.SetActive(true);
+           
+            //scopeScrol.gameObject.SetActive(false);
+            //StartCoroutine(AnimationScopeOut());
         }
         else
         {
@@ -164,9 +173,12 @@ public class SimpleRifleController : MonoBehaviour
         }
 
 
-        CurrentAmountOfAmmo--;
+        ReduceAmmo();
+        
+        Invoke(nameof(CheckIfOutOfBullet), 2);
 
         Debug.Log("Shot " + CurrentAmountOfAmmo + " fired");
+        EventManager.GunshotFired();
     }
 
     public void Shoot()
@@ -185,10 +197,10 @@ public class SimpleRifleController : MonoBehaviour
             
             if ( LayerMask.LayerToName(hit.collider.gameObject.layer) == "Animal" && !isFired)      
             {
-                Debug.Log("Hit Animal");
+                Debug.Log("Hit Animal" + hit.transform.root.name + " hit body part " + hit.transform.name);
 
                 //Player.SetActive(false);
-                Ui.SetActive(false);
+                //Ui.SetActive(false);
                 BulletAudioSource.PlayOneShot(BulletAudioClip);
 
                 // StartCoroutine(FireEffecTrue(hit));
@@ -204,6 +216,7 @@ public class SimpleRifleController : MonoBehaviour
                 //StartCoroutine(CameraOn());
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animator>().SetBool("IsIdle", true);
                 hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animator>().SetBool("IsWalking", false);
+                hit.collider.GetComponent<AnimalHit>().Dear.GetComponent<Animator>().SetBool("IsRunning", false);
 
             }
             else
@@ -228,7 +241,7 @@ public class SimpleRifleController : MonoBehaviour
                     // Adjust the force multiplier (4000 in this case) as needed
                     bulletRigidBody.AddForce(4000 * bulletRigidBody.mass * directionToHitPoint);
 
-                    CheckToRelaod();
+                    //CheckToRelaod(3);
 
                 }
 
@@ -241,7 +254,7 @@ public class SimpleRifleController : MonoBehaviour
                 BulletAudioSource.PlayOneShot(BulletAudioClip);
                 FireRifle();
                 StartCoroutine(DelayedFire());
-                CheckToRelaod();
+                //CheckToRelaod(2);
 
             }
         }
@@ -298,7 +311,10 @@ public class SimpleRifleController : MonoBehaviour
         yield return new WaitForSeconds(0f);
         firstBulletEffectCam.enabled = false;
         BulletEffectCam.enabled = true;
+        shootingCanvas.gameObject.SetActive(false);
+        Debug.Log("Setting UI in Game scene 1");
         TheBox.BulletTimeManager.instance.LaunchBulletTime(bulletSpawnTransform.position, hit);
+
     }
     #endregion
 
@@ -309,8 +325,8 @@ public class SimpleRifleController : MonoBehaviour
         enableScope.SetActive(true);
         isScopedIn = true;
         scopeScrol.gameObject.SetActive(true);
-        ScopeInBtn.gameObject.SetActive(false);
-        ScopeOutBtn.gameObject.SetActive(true);
+        //ScopeInBtn.gameObject.SetActive(false);
+        //ScopeOutBtn.gameObject.SetActive(true);
 
         Debug.Log("Scope In");
     }
@@ -318,14 +334,26 @@ public class SimpleRifleController : MonoBehaviour
     public void ScopeOut() // Called via Scope UI Button
     {
         print("ScopeOut");
+        //m_Animator.SetTrigger("ScopeOut");
         m_Animator.Play("Scope Out");
         isScopedIn = false;
         scopeScrol.gameObject.SetActive(false);
         StartCoroutine(AnimationScopeOut());
-        ScopeInBtn.gameObject.SetActive(true);
-        ScopeOutBtn.gameObject.SetActive(false);
+        //ScopeInBtn.gameObject.SetActive(true);
+        //ScopeOutBtn.gameObject.SetActive(false);
         Debug.Log("Scope out");
 
+    }
+    public void ToggleScope() //Adding in the OnButtonClick event in inspector
+    {
+        if(isScopedIn)
+        {
+            ScopeOut();
+        }
+        else
+        {
+            ScopeIn();
+        }
     }
 
     private void HandleScope()
@@ -348,7 +376,8 @@ public class SimpleRifleController : MonoBehaviour
         animalCamera.gameObject.SetActive(false);
         BulletEffectCam.enabled = false;
         Player.SetActive(true);
-        
+        shootingCanvas.gameObject.SetActive(true);
+
         //fpsController.SetActive(true);
         SecondGun.SetActive(false);
         //m_Animator.enabled = true;
@@ -369,13 +398,17 @@ public class SimpleRifleController : MonoBehaviour
         //m_Animator.enabled = true;
         ResetBulletEffectCam();
         ScopeOut();
-        CheckToRelaod();
+        CheckIfOutOfBullet();
+        shootingCanvas.gameObject.SetActive(true);
+
+        //CheckToRelaod(1);
     }
 
     void ResetBulletEffectCam()
     {
         BulletEffectCam.enabled = false;
         BulletEffectCam.transform.position = Vector3.zero;
+        BulletEffectCam.transform.rotation = Quaternion.identity;
     }
 
     public void Replay()
@@ -410,9 +443,8 @@ public class SimpleRifleController : MonoBehaviour
     //This function decides whether to shoot normaly or with Bullet Motion
     void CheckToShoot(RaycastHit hit)
     {
-        CurrentAmountOfAmmo--;
+        ReduceAmmo();
         
-
         bool isFrontPart = hit.collider.GetComponent<AnimalHit>().partPosition == AnimalPartPosition.Front;
         bool isCriticalHealth = hit.transform.root.GetComponent<Animals>().health <= 30;
         bool isFirstHitToAnimal = hit.transform.root.GetComponent<Animals>().health >= 90;
@@ -425,7 +457,6 @@ public class SimpleRifleController : MonoBehaviour
         else
         {
             SpawnBulletAndAddForce(hit);
-            
         }
     }
 
@@ -435,21 +466,39 @@ public class SimpleRifleController : MonoBehaviour
         Shootedbullet = Instantiate(mainBullet, bulletSpawnTransform.position, Quaternion.identity);
         Shootedbullet.transform.LookAt(hit.point, Vector3.up);
         Rigidbody bulletRB = Shootedbullet.GetComponent<Rigidbody>();
-
+        Debug.Log("Shoot Local Bullet");
         BulletTimeScriptableObject bulletTimeSo = TheBox.BulletTimeManager.instance.bulletTimeValues;
         bulletRB.AddForce(bulletTimeSo.bulletSpeedNormalMotion * bulletRB.mass * Shootedbullet.transform.forward);
     }
 
-
+    void ReduceAmmo()
+    {
+        CurrentAmountOfAmmo--;
+        UIManager.instance.ShowRemainingBullets(CurrentAmountOfAmmo, SOWeapon.WeaponAmmoCapacity, ReloadAmount, SOWeapon.ReloadAmount);
+    }
     public void ReloadWeapon()
-    {   
-        if(ReloadAmount > 0)
+    {
+        if (CurrentAmountOfAmmo < SOWeapon.WeaponAmmoCapacity)
         {
-            int ammoToAdd = ReloadAmount - SOWeapon.WeaponAmmoCapacity;
-            CurrentAmountOfAmmo = ammoToAdd > 0 ? SOWeapon.WeaponAmmoCapacity : ReloadAmount ;
-            ReloadAmount -= SOWeapon.WeaponAmmoCapacity;
+            if (ReloadAmount > 0)
+            {
+                int ammoToAdd = SOWeapon.WeaponAmmoCapacity - CurrentAmountOfAmmo;
+                CurrentAmountOfAmmo +=  ammoToAdd > ReloadAmount ? ReloadAmount : ammoToAdd;
+                ReloadAmount -= ammoToAdd;
+                UIManager.instance.ShowRemainingBullets(CurrentAmountOfAmmo, SOWeapon.WeaponAmmoCapacity, ReloadAmount, SOWeapon.ReloadAmount);
+
+            }
+            else
+            {
+                UIManager.instance.gameOverScreen.SetActive(true);
+                UIManager.instance.AmmoOverText.gameObject.SetActive(true);
+            }
         }
-        else
+    }
+
+    public void CheckIfOutOfBullet()
+    {
+        if(CurrentAmountOfAmmo <= 0 && ReloadAmount <= 0)
         {
             UIManager.instance.gameOverScreen.SetActive(true);
             UIManager.instance.AmmoOverText.gameObject.SetActive(true);
@@ -457,12 +506,17 @@ public class SimpleRifleController : MonoBehaviour
     }
 
 
-    private void CheckToRelaod()
+    public void HitMissController(bool hitStatus, RaycastHit ray)
     {
-        if(CurrentAmountOfAmmo <= 0)
+        if(!hitStatus)
         {
-            ReloadWeapon();
+            AnimalHit animalHit;
+            Debug.Log("Hit miss called");
+            ray.collider.TryGetComponent<AnimalHit>(out animalHit);
+            StartCoroutine(SetPlayerController(animalHit.CameraHit));
+            EventManager.GunshotFired();
         }
     }
+ 
 }
 

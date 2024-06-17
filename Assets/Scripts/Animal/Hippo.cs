@@ -19,6 +19,8 @@ public class Hippo : Animals
         InitializeAnimal();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        EventManager.OnGunshotFired += ReactToGunshot;
+
     }
 
     public override void InitializeAnimal()
@@ -83,10 +85,19 @@ public class Hippo : Animals
        // Debug.Log("Animal is Wounded set the player destination");
         navMeshAgent.ResetPath();
 
-        int randomNo = Random.Range(0, 100);
 
         //if randomNo is less than 50 then animal will attack otherwise it will Flee.
-        bool ShouldAttack = randomNo < 10 ? true : false; 
+        bool ShouldAttack;
+        if (canAttack)
+        {
+            int randomNo = Random.Range(0, 100);
+            ShouldAttack  = randomNo < 10 ? true : false; 
+        }
+        else
+        {
+             ShouldAttack = false;
+        }
+        //bool ShouldAttack = true ; 
 
         Vector3 targetPosition = Vector3.zero;
 
@@ -103,7 +114,7 @@ public class Hippo : Animals
 
         //Either Flee for Attack the player
         navMeshAgent.SetDestination(targetPosition);   
-        //Debug.Log("current Navmesh speed");
+        Debug.Log("current Navmesh targetPOs" + targetPosition);
         SetNavMeshAgentSpeed(runSpeed);
        // Debug.Log("after wounded Navmesh speed");
         SetState(AnimalState.Run);
@@ -131,6 +142,7 @@ public class Hippo : Animals
         yield return new  WaitUntil(() => !navMeshAgent.pathPending);
 
         if (GotoAttackMode)
+        //if(true)
         {
             StartCoroutine(WaitForAttack());
         }
@@ -154,6 +166,11 @@ public class Hippo : Animals
         currentState = newState;
         OnStateChanged(newState);
     }
+
+
+    
+
+
 
 
 }

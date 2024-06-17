@@ -8,21 +8,21 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public  string targetAnimal;
+    public string targetAnimal;
 
     private int currentLevelNo;
 
-    
+
     public List<Animals> animalsCurrentlyLive = new List<Animals>();
 
     [SerializeField]
     private List<Animals> animalsPrefablist = new List<Animals>();
-    
+
     [SerializeField]
     public List<Level> LevelList = new List<Level>();
-    
-    
-    private Level onGoingLevel ;
+
+
+    private Level onGoingLevel;
 
     public string shootedAnimal;
 
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -60,21 +60,22 @@ public class LevelManager : MonoBehaviour
 
     public void LevelClearCheck()
     {
-      if(shootedAnimal == targetAnimal)
-      {
+        if (shootedAnimal == targetAnimal)
+        {
             onGoingLevel.isCleard = true;
-            CheckForNewLevel(onGoingLevel.LevelNo + 1);
             UIManager.instance.levelClearText.text = "You Shot a " + shootedAnimal;
-      }
+            CheckForNewLevel(onGoingLevel.LevelNo + 1);
+
+        }
     }
 
     private void CheckForNewLevel(int levelno)
     {
-        
+
         currentLevelNo = levelno;
         onGoingLevel = GetNewLevel();
-        
-        if(onGoingLevel != null)
+
+        if (onGoingLevel != null)
         {
             SetNewLevel();
             Debug.Log("Setting New Level");
@@ -85,35 +86,32 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Showing Game Over Screen");
 
         }
-        
+
 
     }
 
     private void SetNewLevel()
     {
-        targetAnimal =  onGoingLevel.AnimalToShoot;
+        targetAnimal = onGoingLevel.AnimalToShoot;
 
         //SetUP animal Stat UI
         animalInfoSetUp.SetupStatsUI(targetAnimal);
-     
+
         UIManager.instance.SetLevelClearScreen("Level" + onGoingLevel.LevelNo.ToString());
 
     }
-    
 
 
-   private void CheckifGameOver()
-   {
-        if(onGoingLevel == null)
+
+    private void CheckifGameOver()
+    {
+        if (onGoingLevel == null)
         {
             Debug.Log("game over");
             StartCoroutine(GameOver());
         }
 
-   }
-
-
-
+    }
 
     private Level GetNewLevel()
     {
@@ -128,7 +126,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("All levels are cleared");
         return null;
     }
-   
+
 
     private void CheckIfAnimalExistToCompleteLevel()
     {
@@ -142,7 +140,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        if(count == 0)
+        if (count == 0)
         {
             Animals animalPrefab = GetAnimalToSpawn();
 
@@ -159,10 +157,8 @@ public class LevelManager : MonoBehaviour
             {
                 return animal;
             }
-            
-           
         }
-        
+
         Debug.Log("Target animal " + targetAnimal + " is not in animalPrefabList ");
         return null;
     }
@@ -170,8 +166,9 @@ public class LevelManager : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(5f);
-        UIManager.instance.gameOverScreen.SetActive(true);
-        Time.timeScale = 0;
+        UIManager.instance.GameWonScreen();
+        Debug.Log("Game is over");
+      
     }
 
     //Just adding till developement purpose
@@ -182,8 +179,6 @@ public class LevelManager : MonoBehaviour
             level.isCleard = false;
             Debug.Log("Resetting level State");
         }
-
-
     }
 
 }

@@ -13,6 +13,7 @@ TagManager:
   - Back
   - Hippo
   - Elephant
+  - Zebra
   layers:
   - Default
   - TransparentFX

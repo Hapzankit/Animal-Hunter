@@ -25,7 +25,7 @@ public class Loading : MonoBehaviour
 
         // Simulated progress value
         float simulatedProgress = Random.Range(0.15f, 0.85f);
-        float simulatedProgressTime = Random.Range(0.5f, 0.9f);
+        float simulatedProgressTime = Random.Range(0.7f, 0.9f);
 
         loadingImage.DOFillAmount(simulatedProgress, simulatedProgressTime);
 

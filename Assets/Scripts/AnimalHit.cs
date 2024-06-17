@@ -16,7 +16,6 @@ namespace HapzsoftGames
         public GameObject hitpos;
         public GameObject blood;
         public Animals animal;
-
         public float stopFollowingDistance = 5f; // Distance at which camera stops following
         public GameObject projectile; // Reference to the projectile
 
@@ -66,7 +65,7 @@ namespace HapzsoftGames
         {
             animal.isAlive = false;
             //animator.SetFloat("Dead Animation", Random.Range(0, 2));
-           // animator.SetBool("IsDead", true);
+            //animator.SetBool("IsDead", true);
             //animator.SetBool("IsIdle", false);
             //animator.SetBool("IsWalking", false);
 
@@ -74,7 +73,7 @@ namespace HapzsoftGames
             //animal.ragdollOnOff.RagDollModeOn();
 
             simpleRifleController.StartCoroutine(simpleRifleController.CameraOn(CameraHit));
-            Debug.Log("Animal is dead");
+            Debug.Log("Animal is dead " + gameObject.tag);
             LevelManager.instance.shootedAnimal = gameObject.tag;
             //LevelManager.instance.LevelClearCheck();
 
@@ -87,13 +86,17 @@ namespace HapzsoftGames
             animal.health -= damage;
 
             float newHealth = animal.health / 90;
-            Debug.Log("The health of the hippo left is " + newHealth);
+            Debug.Log("The health left is " + newHealth);
 
             animal_health_bar.transform.parent.gameObject.SetActive(true);
 
             if(animal.health == 30)
             {
-                animal_health_bar.transform.parent.LookAt(Camera.main.transform);
+                Debug.Log("animal health parent " + animal_health_bar.transform.parent.name);
+
+                SimpleRifleController simpleRifleController= FindObjectOfType<SimpleRifleController>();
+                Debug.Log("point to camera " + simpleRifleController.mainCamera.name);
+                animal_health_bar.transform.parent.LookAt(simpleRifleController.mainCamera.transform);
             }
             else
             {
@@ -105,12 +108,13 @@ namespace HapzsoftGames
            
         }
 
-        public virtual IEnumerator WaitBeforeAttack()
+        public virtual IEnumerator WaitBeforeAnimalReact()
         {
             yield return new WaitForSeconds(2f);
-
-            animal.currentState = AnimalState.Wounded;
-            animal.UpdateState();
+            //Here we are scatering all animals
+            EventManager.GunshotFired();
+            //animal.currentState = AnimalState.Wounded;
+            //animal.UpdateState();
 
         }
         void DisableHealthBar()

@@ -2016,7 +2016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5718931784140782906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3060,7 +3060,7 @@ GameObject:
   - component: {fileID: 5821949518704006238}
   m_Layer: 3
   m_Name: Hippo_Mesh_LOD's
-  m_TagString: Dear
+  m_TagString: Hippo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3201,7 +3201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6266034275975020315}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fc6c52dd59bbb64db786fe3713ff653, type: 3}
   m_Name: 
@@ -3701,9 +3701,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.31067082
-  m_Height: 1.285173
+  m_Height: 1.0761005
   m_Direction: 1
-  m_Center: {x: 0.0000045512897, y: 0.3440593, z: 0.06940579}
+  m_Center: {x: 0.0000048771694, y: 0.23952328, z: 0.0694058}
 --- !u!1 &6686454922170113739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,8 +4924,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.72533095, y: 1.2110028, z: 0.7909023}
-  m_Center: {x: 0.0041263048, y: 2.4845297, z: 0.10454567}
+  m_Size: {x: 0.72533095, y: 1.3071747, z: 0.7909023}
+  m_Center: {x: 0.0041262833, y: 2.5326083, z: 0.10454535}
 --- !u!54 &8288443106101227398
 Rigidbody:
   m_ObjectHideFlags: 0

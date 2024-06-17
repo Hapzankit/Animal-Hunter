@@ -15,3 +15,4 @@ MonoBehaviour:
   AnimaList:
   - {fileID: 11400000, guid: 8a84fa81dc5f6ea4b8aa87949db9c988, type: 2}
   - {fileID: 11400000, guid: 4c91368f36b6c054fb372ee0f566ef3a, type: 2}
+  - {fileID: 11400000, guid: 1f841d71596fa514c9b286a2e8a867b0, type: 2}

@@ -1,7 +1,7 @@
 using Cinemachine;
-using DG.Tweening;
 using HapzsoftGames;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheBox
@@ -24,8 +24,8 @@ namespace TheBox
         /// <summary>
         /// We keep the instance of the prefabs during all the process and destroy it at the end.
         /// </summary>
-        GameObject bulletTimeInstance = default;
-        GameObject bulletTimeCameraInstance = default;
+        public GameObject bulletTimeInstance = default;
+        public GameObject bulletTimeCameraInstance = default;
         GameObject targetCameraInstance = default;
 
         /// <summary>
@@ -60,6 +60,13 @@ namespace TheBox
         // Prevent from calling multiple time the coroutin use to wait before destroying camera and bullet.
         public bool targetHited = default;
 
+        public SimpleRifleController simpleRifleController;
+
+        private Camera BulletEffectCamera;
+
+
+
+
         private void Awake()
         {
             // Singleton pattern
@@ -72,7 +79,9 @@ namespace TheBox
             instance = this;
 
             // Enable the script only when need it to launch a bullet time.
-            enabled = false;
+            //enabled = false;
+
+            simpleRifleController = FindAnyObjectByType<SimpleRifleController>(); 
         }
 
         /// <summary>
@@ -92,12 +101,12 @@ namespace TheBox
             this.startPoint = startPoint;
             this.ray = ray;
             distanceFromTarget = Vector3.Distance(ray.point, startPoint);
-
+           
             InstantiateObjects();
             GetScriptsFromInstances();
-            AssigneCameraLookAt();
+            AssignCameraLookAt();
             CameraPriority();
-
+           
             bulletTargetDistance = Vector3.Distance(ray.point, bulletTimeInstance.transform.position);
             // Scaling time is require before applying force to the bullet
             // otherwise your bullet will move before the time scale.
@@ -115,13 +124,14 @@ namespace TheBox
             bulletTimeInstance = Instantiate(BulletTimePrefab, startPoint , Quaternion.identity);
             //Debug.Log("Bullet look at target" + ray.point);
 
-            bulletTimeInstance.transform.DOLookAt(ray.point, 0.1f);
+            //bulletTimeInstance.transform.DOLookAt(ray.point, 0.05f);
 
-            //bulletTimeInstance.transform.LookAt(ray.point, Vector3.up);
-
+            bulletTimeInstance.GetComponent<BulletCollision>().bulletTarget = ray.transform.root.gameObject;
+        
             bulletTimeCameraInstance = Instantiate(BulletTimeCameraPrefab, startPoint, Quaternion.identity);
 
             bulletTimeCameraInstance.transform.LookAt(ray.point, Vector3.up);
+
 
             //targetCameraInstance = Instantiate(TargetCameraPrefab, ray.point, Quaternion.identity);
         }
@@ -138,7 +148,7 @@ namespace TheBox
            
         }
 
-        void AssigneCameraLookAt()
+        void AssignCameraLookAt()
         {
             bulletVirtualCameraInstance.LookAt = bulletTimeInstance.transform;
             bulletVirtualCameraInstance.Follow = bulletTimeInstance.transform; 
@@ -159,14 +169,14 @@ namespace TheBox
             }
 
 
-            if(key < 1 && key > 0.97)        //added by smit
+            if(key < 1 && key > 0.97) //added by smit
             {
                 ray.transform.GetComponent<AnimalHit>().CameraHit.gameObject.SetActive(true); 
                 Destroy(bulletTimeCameraInstance);
 
             }
 
-            if (key <0.9)        //added by smit
+            if (key < 0.9) //added by smit
             {
                 CameraFollowBullet();
             }
@@ -175,6 +185,7 @@ namespace TheBox
             LookAtTargetPosition();
             CameraPriority();
         }
+
 
         private void FixedUpdate()
         {
@@ -185,8 +196,10 @@ namespace TheBox
         {
             targetHited = false;
             TimeScaleManager();
-            Destroy(bulletTimeInstance);
-           // Destroy(bulletTimeCameraInstance);
+           
+            simpleRifleController.HitMissController(bulletTimeInstance.GetComponent<BulletCollision>().didHitTarget, ray);
+            //Destroy(bulletTimeInstance);
+            //Destroy(bulletTimeCameraInstance);
             Destroy(targetCameraInstance);
             bulletTimeValues.OffBulletTime();
         }
@@ -211,6 +224,10 @@ namespace TheBox
             bulletTimeInstance.TryGetComponent(out Rigidbody bulletRigidBody);
             Vector3 direction = (ray.point - bulletTimeInstance.transform.position).normalized;
             bulletRigidBody.AddForce(bulletTimeValues.bulletSpeedBulletMotion * bulletRigidBody.mass * direction);
+           
+            bulletTimeInstance.GetComponent<BulletCollision>().targetRagdoll = ray.transform.root.GetComponent<RagdollOnOff>();
+            bulletTimeInstance.GetComponent<BulletCollision>().targetTransformPosition= ray.point;
+            bulletTimeInstance.GetComponent<BulletCollision>().rbTarget = ray.transform.GetComponent<Rigidbody>();
         }
 
         /// <summary>
@@ -233,12 +250,15 @@ namespace TheBox
             var bulletValue = bulletTimeValues.BulletCameraDutchCurve.Evaluate(key);
             bulletVirtualCameraInstance.m_Lens.Dutch = bulletValue;
             //targetVirtualCameraInstance.m_Lens.Dutch = 
-            //    bulletTimeValues.UseBulletDutchCurveForBoth ? bulletValue : bulletTimeValues.TargetCameraDutchCurve.Evaluate(key);
+            //bulletTimeValues.UseBulletDutchCurveForBoth ? bulletValue : bulletTimeValues.TargetCameraDutchCurve.Evaluate(key);
         }
 
         void CameraFollowBullet()
         {
             bulletTimeCameraInstance.transform.position = bulletTimeInstance.transform.position;
+            //bulletTimeCameraInstance.transform.position = Vector3.Lerp(bulletTimeCameraInstance.transform.position, bulletTimeInstance.transform.position, 10 * Time.deltaTime);
+            //bulletTimeCameraInstance.transform.parent = bulletTimeInstance.transform;
+
         }
 
         /// <summary>

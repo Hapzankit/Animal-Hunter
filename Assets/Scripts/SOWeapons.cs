@@ -8,4 +8,5 @@ public class SOWeapons : ScriptableObject
     public int WeaponAmmoCapacity;
     public int WeaponDamage;
     public int FireRate;
+    public int ReloadAmount;
 }

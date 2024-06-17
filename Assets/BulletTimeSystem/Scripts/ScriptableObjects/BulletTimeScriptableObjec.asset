@@ -187,6 +187,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   deathTime: 2
   bulletSpeedBulletMotion: 10000
-  bulletSpeedNormalMotion: 6000
+  bulletSpeedNormalMotion: 5500
   cameraPripority: 1500
   fixedDeltaTime: 0.02

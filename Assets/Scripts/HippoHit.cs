@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 
-namespace HapzsoftGames
-{
     public class HippoHit : AnimalHit
     {
         private void OnTriggerEnter(Collider other)
@@ -38,7 +36,7 @@ namespace HapzsoftGames
                         if (animal.health > 0)
                         {
                             CheckToSetPlayer("Hippo|Hit_M", simpleRifleController);
-                            StartCoroutine(WaitBeforeAttack());
+                            //StartCoroutine(WaitBeforeAttack());
                         }
                         else
                         {
@@ -50,12 +48,12 @@ namespace HapzsoftGames
                         // Handle collision with a wall
                         print("BACK!");
 
-                        TakeDamage(other.GetComponent<BulletCollision>().bulletDamage);
+                        TakeDamage(other.GetComponent<BulletCollision>().bulletDamage);                       
 
                         if (animal.health > 0)
                         {
                             CheckToSetPlayer("Hippo|Hit_B", simpleRifleController);
-                            StartCoroutine(WaitBeforeAttack());
+                            //StartCoroutine(WaitBeforeAttack());
 
                         }
                         else
@@ -84,6 +82,9 @@ namespace HapzsoftGames
                 
                 other.gameObject.SetActive(false);
 
+                
+                StartCoroutine(WaitBeforeAnimalReact());
+
             }
         }
 
@@ -92,4 +93,3 @@ namespace HapzsoftGames
 
 
    
-}

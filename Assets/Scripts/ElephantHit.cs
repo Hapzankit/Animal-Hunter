@@ -10,7 +10,6 @@ namespace HapzsoftGames
 {
     public class ElephantHit : AnimalHit
     {
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Bullet"))
@@ -29,8 +28,6 @@ namespace HapzsoftGames
 
                 SimpleRifleController simpleRifleController = FindObjectOfType<SimpleRifleController>();
 
-
-
                 switch (gameObject.name)
                 {
                     
@@ -43,7 +40,7 @@ namespace HapzsoftGames
                         if (Dear.GetComponentInParent<Elephant>().health > 0)
                         {
                             CheckToSetPlayer("Hit BAck", simpleRifleController);
-                            StartCoroutine(WaitBeforeAttack());
+                            //StartCoroutine(WaitBeforeAttack());
                         }
                         else
                         {
@@ -55,7 +52,7 @@ namespace HapzsoftGames
                     case "spine1_hiResSpine5":
 
                         TakeDamage(100);
-
+                  
                         // Handle collision with player (if projectiles can hit the player)
                         print("FRONT!");
                         CheckToKill(simpleRifleController);
@@ -71,6 +68,9 @@ namespace HapzsoftGames
                 hitdear = true;
                 //StartCoroutine(TurnObjectOff());
                 other.gameObject.SetActive(false);
+
+                StartCoroutine(WaitBeforeAnimalReact());
+
 
             }
         }

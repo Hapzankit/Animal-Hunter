@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class AnimalManager : MonoBehaviour
+public class AnimalManager : MonoBehaviour 
 {
     public List<Animals> CurrentAinmalInScene = new List<Animals>();
+
+
 
     private void Start()
     {

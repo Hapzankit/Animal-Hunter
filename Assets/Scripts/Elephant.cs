@@ -10,6 +10,8 @@ public class Elephant : Animals
     {
         InitializeAnimal();
         player = GameObject.FindGameObjectWithTag("Player");
+        EventManager.OnGunshotFired += ReactToGunshot;
+
     }
 
     public override void InitializeAnimal()
@@ -51,10 +53,17 @@ public class Elephant : Animals
        // Debug.Log("Animal is Wounded set the player destination");
         navMeshAgent.ResetPath();
 
-        int randomNo = Random.Range(0, 100);
-
         //if randomNo is less than 50 then animal will attack otherwise it will Flee.
-        bool ShouldAttack = randomNo < 10 ? true : false;
+        bool ShouldAttack;
+        if (canAttack)
+        {
+            int randomNo = Random.Range(0, 100);
+            ShouldAttack = randomNo < 10 ? true : false;
+        }
+        else
+        {
+            ShouldAttack = false;
+        }
 
         Vector3 targetPosition = Vector3.zero;
 
@@ -71,6 +80,8 @@ public class Elephant : Animals
 
         //Either Flee for Attack the player
         navMeshAgent.SetDestination(targetPosition);
+        Debug.Log("current Navmesh targetPOs" + targetPosition);
+
         //Debug.Log("current Navmesh speed");
         SetNavMeshAgentSpeed(runSpeed);
         //Debug.Log("after wounded Navmesh speed");
@@ -111,7 +122,7 @@ public class Elephant : Animals
 
     private IEnumerator WaitToRun()
     {
-        yield return new WaitUntil(() => navMeshAgent.pathPending);
+        yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
         if (GotoAttackMode)
         {
@@ -137,5 +148,5 @@ public class Elephant : Animals
     }
 
 
-    
+   
 }

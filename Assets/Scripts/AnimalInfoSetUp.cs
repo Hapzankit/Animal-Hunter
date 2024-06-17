@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class AnimalInfoSetUp : MonoBehaviour
 {
@@ -12,6 +12,16 @@ public class AnimalInfoSetUp : MonoBehaviour
 
     [SerializeField] Image animalImage;
     [SerializeField] TMP_Text animalNameText, animalSpeedText, animalHeightText, animalWeightText, animalAgeText, animalFactText;
+
+
+    public void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            LevelManager.instance.animalInfoSetUp = this;
+        }
+    }
+
 
     public void SetupStatsUI(string targetAnimal)
     {

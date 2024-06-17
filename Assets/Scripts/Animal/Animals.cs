@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -40,7 +41,9 @@ public abstract class Animals : MonoBehaviour
     public abstract void HandleRunState();
 
     public abstract void SetState(AnimalState newState);
+
     public abstract void HandleAttackState();
+
     public abstract void HandleWoundedState();
 
     public GameObject player;
@@ -50,6 +53,26 @@ public abstract class Animals : MonoBehaviour
     public float updateInterval = 1f; // Time in seconds between updates
     private float timer;
     private bool checkIfPlayerMoving;
+
+    public Transform[] DisappearWaypoints;
+
+    public bool canAttack;
+
+
+    public virtual void ReactToGunshot()
+    {
+        if (isAlive)
+        {
+            Debug.Log("ReactoGun called" + gameObject.name);
+
+            StopAllCoroutines();
+            currentState = AnimalState.Wounded;
+            UpdateState();
+        }
+
+    }
+
+
     public void Update()
     {
         if (checkIfPlayerMoving)
@@ -63,6 +86,7 @@ public abstract class Animals : MonoBehaviour
                 }
                 timer = updateInterval;
             }
+        
         }
 
     }
@@ -82,8 +106,6 @@ public abstract class Animals : MonoBehaviour
             return GetRandomNavMeshPosition(origin, distance);
         }
     }
-
-
 
     public virtual void AnimalReadyAttack()
     {
@@ -153,14 +175,19 @@ public abstract class Animals : MonoBehaviour
         while (true)
         {
 
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 1)
+            Debug.Log("Remaining distance " + navMeshAgent.remainingDistance );
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            
+            //if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance - 1)
+            if(distance <= 4.5f)
             {
+                Debug.Log("Starting to attack system");
                 navMeshAgent.ResetPath();
                 if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
                 {
                     checkIfPlayerMoving = false;
                     // Then Changing the state to attack player
-                    Debug.Log("Starting to attack system");
+                    //Debug.Log("Starting to attack system");
                     SetState(AnimalState.Attack);
                     break; // Break the loop if the attack starts
                 }
@@ -169,17 +196,25 @@ public abstract class Animals : MonoBehaviour
         }
     }
 
-
-
-    public virtual IEnumerator WaitForFlee(int maxRepetitions = 3)
+    private void SetFleePath(int currenRepetation, int maxRepetation)
     {
-        int currentRepetition = 0;
+        int disappearWapointIndex = Random.Range(0, DisappearWaypoints.Length);
+        Vector3 targetPosition = currenRepetation == maxRepetation - 1 ? DisappearWaypoints[disappearWapointIndex].position : GetRandomNavMeshPosition(transform.position, wanderDistance);
+        Debug.Log("Setting New destination for run");
+        navMeshAgent.SetDestination(targetPosition);
+        //Debug.Log($"Repetition {currentRepetition} completed."); 
+    }
 
-        while (currentRepetition < maxRepetitions)
+    public virtual IEnumerator WaitForFlee(int maxRepetitions = 4)
+    {
+        int currentRepetation = 0;
+
+        while (currentRepetation < maxRepetitions)
         {
             
             yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
+            
            // Debug.Log("Remaining Distance to Reach the player: " + navMeshAgent.pathEndPosition);
            // Debug.Log("Checking Distance to Reach the player: " + Vector3.Distance(transform.position, player.transform.position));
 
@@ -188,14 +223,13 @@ public abstract class Animals : MonoBehaviour
             {
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {
+                    //Debug.Log("Flee Loop ");
                     navMeshAgent.ResetPath();
                     if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
                     {
-                        currentRepetition++;
-                        Vector3 targetPosition = GetRandomNavMeshPosition(transform.position, wanderDistance);
-                        navMeshAgent.SetDestination(targetPosition);
-                        //Debug.Log($"Repetition {currentRepetition} completed.");
-                        break; 
+                        currentRepetation++;
+                        SetFleePath(currentRepetation, maxRepetitions);
+                        break;
                     }
                 }
                 yield return null; 
@@ -221,7 +255,7 @@ public abstract class Animals : MonoBehaviour
         //Debug.Log("animation state " + newState.ToString());
         // Switch based on the new state to set Animator parameters
 
-        if(newState == AnimalState.Death)
+        if (newState == AnimalState.Death)
         {
             animator.SetFloat("Dead Animation", Random.Range(0, 2));
         }
@@ -264,7 +298,14 @@ public abstract class Animals : MonoBehaviour
         // Destination has been reached
         SetState(AnimalState.Idle);
     }
+
+    private void OnDestroy()
+    {
+        EventManager.OnGunshotFired -= ReactToGunshot;
+    }
 }
+
+
 public enum AnimalState
 {
     Idle,
